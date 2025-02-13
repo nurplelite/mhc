@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { NavComponent } from "./components/nav/nav.component";
+import { ThemeService } from './theme.service';
 
 
 @Component({
@@ -10,5 +11,9 @@ import { NavComponent } from "./components/nav/nav.component";
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
-  title = 'mhc';
+  title = 'Mad Hare Consulting, LLC';
+  constructor(private themeService: ThemeService) {
+    this.themeService.setTheme(this.themeService.getCurrentTheme());
+  }
+
 }

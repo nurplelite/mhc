@@ -25,14 +25,18 @@
             ],
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "scss",
-            "assets": [
-              {
-                "glob": "**/*",
-                "input": "public"
-              }
+          "assets": [
+              "src/favicon.ico",
+              "src/assets"
             ],
             "styles": [
-              "@angular/material/prebuilt-themes/cyan-orange.css",
+        
+              "src/assets/themes/dark.css",
+              "src/assets/themes/dark-hc.css",
+              "src/assets/themes/dark-mc.css",
+              "src/assets/themes/light.css",
+              "src/assets/themes/light-hc.css",
+              "src/assets/themes/light-mc.css",
               "src/styles.scss"
             ],
             "scripts": []
@@ -86,13 +90,13 @@
             "tsConfig": "tsconfig.spec.json",
             "inlineStyleLanguage": "scss",
             "assets": [
-              {
-                "glob": "**/*",
-                "input": "public"
-              }
+              "src/favicon.ico",
+              "src/assets"
             ],
             "styles": [
-              "@angular/material/prebuilt-themes/cyan-orange.css",
+
+              "src/assets/themes/dark.css",
+          
               "src/styles.scss"
             ],
             "scripts": []
