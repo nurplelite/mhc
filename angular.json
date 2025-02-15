@@ -31,12 +31,7 @@
             ],
             "styles": [
         
-              "src/assets/themes/dark.css",
-              "src/assets/themes/dark-hc.css",
-              "src/assets/themes/dark-mc.css",
-              "src/assets/themes/light.css",
-              "src/assets/themes/light-hc.css",
-              "src/assets/themes/light-mc.css",
+              "src/assets/themes/djs.scss",
               "src/styles.scss"
             ],
             "scripts": []
@@ -95,8 +90,7 @@
             ],
             "styles": [
 
-              "src/assets/themes/dark.css",
-          
+              "src/assets/themes/djs.scss",
               "src/styles.scss"
             ],
             "scripts": []

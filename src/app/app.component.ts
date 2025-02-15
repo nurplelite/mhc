@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { ThemeService } from './theme.service';
 import { RouterOutlet } from '@angular/router';
+
 
 
 @Component({
@@ -11,8 +11,8 @@ import { RouterOutlet } from '@angular/router';
 })
 export class AppComponent {
   title = 'Mad Hare Consulting, LLC';
-  constructor(private themeService: ThemeService) {
-    this.themeService.setTheme(this.themeService.getCurrentTheme());
-  }
+  // constructor(private themeService: ThemeService) {
+  //   this.themeService.setTheme(this.themeService.getCurrentTheme());
+  // }
 
 }
