@@ -6,7 +6,7 @@ $my-theme: mat.define-theme((
   color: (
     primary: theme.$primary-palette, // Reference from theme file
     tertiary: theme.$tertiary-palette, // Reference from theme file
-    theme-type: light,
+    theme-type: dark,
   ),
 ));
 

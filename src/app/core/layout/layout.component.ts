@@ -1,13 +1,28 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { NavComponent } from '../nav/nav.component';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatButtonModule } from '@angular/material/button';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatListModule } from '@angular/material/list';
+import { MatIconModule } from '@angular/material/icon';
+import { MatMenuModule } from '@angular/material/menu';
+import { APP_TITLE } from '../../app.config';
 
 @Component({
   selector: 'app-layout',
-  imports: [RouterOutlet, NavComponent],
+  standalone: true,
+  imports: [
+    RouterOutlet,
+    MatSidenavModule,
+    MatListModule,
+    MatIconModule,
+    MatMenuModule,
+    MatToolbarModule,
+    MatButtonModule
+  ],
   templateUrl: './layout.component.html',
-  styleUrl: './layout.component.scss'
+  styleUrls: ['./layout.component.scss']
 })
 export class LayoutComponent {
-
+  readonly Company = APP_TITLE;
 }
