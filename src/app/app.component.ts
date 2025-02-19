@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { Title } from '@angular/platform-browser';
-import { APP_TITLE } from './app.config';
+import { environment } from '../environments/environment';
 
 
 
@@ -12,7 +12,7 @@ import { APP_TITLE } from './app.config';
   styleUrl: './app.component.scss'
 })
 export class AppComponent implements OnInit {
-  title = APP_TITLE;
+  title = environment.APP_TITLE;
 
   // constructor(private themeService: ThemeService) {
   //   this.themeService.setTheme(this.themeService.getCurrentTheme());

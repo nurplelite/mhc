@@ -1,6 +1,5 @@
 import { ApplicationConfig, provideZoneChangeDetection } from '@angular/core';
 import { provideRouter } from '@angular/router';
-
 import { routes } from './app.routes';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 
@@ -10,4 +9,4 @@ export const appConfig: ApplicationConfig = {
     provideAnimationsAsync()]
 };
 
-export const APP_TITLE = 'Mad Hare Consulting, LLC';
+

@@ -9,6 +9,7 @@ export const routes: Routes = [
     { path: '', 
         component: LayoutComponent, pathMatch: 'full',
         children: [
+            { path: '', redirectTo: 'home', pathMatch: 'full' },
             { path: 'home', component: HomeComponent },
             { path: 'about', component: AboutComponent },
             { path: 'gallery', component: GalleryComponent },

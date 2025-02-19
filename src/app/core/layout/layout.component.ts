@@ -1,18 +1,19 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
-import { APP_TITLE } from '../../app.config';
+import { routes } from '../../app.routes';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-layout',
   standalone: true,
   imports: [
-    RouterOutlet,
+    RouterModule,
     MatSidenavModule,
     MatListModule,
     MatIconModule,
@@ -24,5 +25,5 @@ import { APP_TITLE } from '../../app.config';
   styleUrls: ['./layout.component.scss']
 })
 export class LayoutComponent {
-  readonly Company = APP_TITLE;
+  readonly Company = environment.APP_TITLE;
 }

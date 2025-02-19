@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "bkup": {
+    "mhc": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -38,6 +38,12 @@
           },
           "configurations": {
             "production": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.prod.ts"
+                }
+              ],
               "budgets": [
                 {
                   "type": "initial",
@@ -58,16 +64,16 @@
               "sourceMap": true
             }
           },
-          "defaultConfiguration": "production"
+          "defaultConfiguration": "development"
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "bkup:build:production"
+              "buildTarget": "mhc:build:production"
             },
             "development": {
-              "buildTarget": "bkup:build:development"
+              "buildTarget": "mhc:build:development"
             }
           },
           "defaultConfiguration": "development"
