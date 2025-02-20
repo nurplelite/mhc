@@ -1,0 +1,21 @@
+Property,Values
+display,block, inline, inline-block, none, flex, grid
+position,static, relative, absolute, fixed, sticky
+float,left, right, none
+clear,left, right, both, none
+overflow,visible, hidden, scroll, auto
+visibility,visible, hidden, collapse
+flex-direction,row, row-reverse, column, column-reverse
+flex-wrap,nowrap, wrap, wrap-reverse
+justify-content,flex-start, flex-end, center, space-between, space-around, space-evenly
+align-items,stretch, center, flex-start, flex-end, baseline
+align-self,auto, stretch, center, flex-start, flex-end, baseline
+text-align,left, right, center, justify
+text-transform,none, capitalize, uppercase, lowercase
+font-style,normal, italic, oblique
+font-weight,normal, bold, bolder, lighter, 100-900
+white-space,normal, nowrap, pre, pre-wrap, pre-line
+background-repeat,repeat, repeat-x, repeat-y, no-repeat, space, round
+background-size,auto, cover, contain, length(px, %, em), percentage(%)
+border-style,none, hidden, dotted, dashed, solid, double, groove, ridge, inset, outset
+cursor,auto, default, pointer, crosshair, move, text, wait, help, not-allowed, url(path-to-image)

@@ -7,13 +7,15 @@ import { LayoutComponent } from './core/layout/layout.component';
 
 export const routes: Routes = [
     { path: '', 
-        component: LayoutComponent, pathMatch: 'full',
+        component: LayoutComponent,
         children: [
             { path: '', redirectTo: 'home', pathMatch: 'full' },
             { path: 'home', component: HomeComponent },
             { path: 'about', component: AboutComponent },
             { path: 'gallery', component: GalleryComponent },
-            { path: 'services', component: ServicesComponent}
+            { path: 'services', component: ServicesComponent},
+            { path: '**', redirectTo: 'home' }
         ]
-    }
+    },
+    { path: '**', redirectTo: 'home' }
 ];
