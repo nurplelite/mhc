@@ -3,10 +3,10 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { environment } from '../../../environments/environment';
-import { MatIcon } from '@angular/material/icon';
+
 @Component({
   selector: 'app-home',
-  imports: [MatGridListModule, MatCardModule, MatButtonModule, MatIcon],
+  imports: [MatGridListModule, MatCardModule, MatButtonModule],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })
