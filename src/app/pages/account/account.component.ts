@@ -9,6 +9,9 @@ import { User } from '../../models/user.model';
 import { Observable } from 'rxjs';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
+import { Firestore } from '@angular/fire/firestore';
+import { doc, getDoc, setDoc } from '@angular/fire/firestore';
+import { Timestamp } from '@angular/fire/firestore';
 
 @Component({
   selector: 'app-account',
