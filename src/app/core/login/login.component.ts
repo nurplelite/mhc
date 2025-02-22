@@ -9,11 +9,14 @@ import { User } from '../../models/user.model';
 import { Observable } from 'rxjs';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
-
+import { Firestore } from '@angular/fire/firestore';
+import { doc, getDoc, setDoc } from '@angular/fire/firestore';
+import { Timestamp } from '@angular/fire/firestore';
+import { RegistrationComponent } from '../registration/registration.component';
 
 @Component({
   selector: 'app-login',
-  imports: [ReactiveFormsModule, MatInputModule, MatFormFieldModule, MatButtonModule, MatCardModule],
+  imports: [ReactiveFormsModule, MatInputModule, MatFormFieldModule, MatButtonModule, MatCardModule, RegistrationComponent],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss'
 })

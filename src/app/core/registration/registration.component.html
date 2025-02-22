@@ -1,0 +1,66 @@
+<mat-card>
+    <mat-card-title>Register</mat-card-title> 
+            <mat-form-field>
+                <mat-label>First Name</mat-label>
+                <input  matInput
+                    [formControl]="firstName"
+                    type="text"
+                    required
+                    autocomplete="on"
+                    placeholder=""
+                />
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Last Name</mat-label>
+                <input  matInput
+                    [formControl]="lastName"
+                    type="text"
+                    required
+                    autocomplete="on"
+                    placeholder=""
+                />
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Display Name</mat-label>
+                <input  matInput
+                    [formControl]="displayName"
+                    type="text"
+                    required
+                    autocomplete="on"
+                    placeholder=""
+                />
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>email</mat-label>
+                <input  matInput
+                    [formControl]="email"
+                    required
+                    type="email"
+                    autocomplete="on"
+                    placeholder=""
+                />
+                <mat-form-field>
+                    <mat-label>Password</mat-label>
+                    <input  matInput
+                        [formControl]="passwd"
+                        type="password"
+                        required
+                        autocomplete="on"
+                        placeholder=""
+                    />
+                </mat-form-field>
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>Confirm Password</mat-label>
+                    <input  matInput
+                        [formControl]="confirmPassword"
+                        type="password"
+                        required
+                        autocomplete="on"
+                        placeholder=""
+                    />
+                </mat-form-field>
+    
+
+    <button mat-raised-button (click)="register()">Register</button>
+</mat-card>

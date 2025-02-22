@@ -6,6 +6,7 @@ import { ServicesComponent } from './pages/services/services.component';
 import { LayoutComponent } from './core/layout/layout.component';
 import { LoginComponent } from './core/login/login.component';
 import { AccountComponent } from './pages/account/account.component';
+import { RegistrationComponent } from './core/registration/registration.component';
 
 export const routes: Routes = [
     { path: '', 
@@ -18,6 +19,7 @@ export const routes: Routes = [
             { path: 'services', component: ServicesComponent},
             { path: 'login', component: LoginComponent },
             { path: 'account', component: AccountComponent }, 
+            { path: 'registration', component: RegistrationComponent },
             { path: '**', redirectTo: 'home' }
         ]
     },
