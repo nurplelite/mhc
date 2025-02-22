@@ -25,5 +25,5 @@ import { environment } from '../../../environments/environment';
   styleUrls: ['./layout.component.scss']
 })
 export class LayoutComponent {
-  readonly Company = environment.APP_TITLE;
+  readonly Company = environment.appTitle;
 }

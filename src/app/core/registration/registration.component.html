@@ -31,7 +31,7 @@
                 />
             </mat-form-field>
             <mat-form-field>
-                <mat-label>email</mat-label>
+                <mat-label>Email</mat-label>
                 <input  matInput
                     [formControl]="email"
                     required
@@ -39,27 +39,28 @@
                     autocomplete="on"
                     placeholder=""
                 />
-                <mat-form-field>
-                    <mat-label>Password</mat-label>
-                    <input  matInput
-                        [formControl]="passwd"
-                        type="password"
-                        required
-                        autocomplete="on"
-                        placeholder=""
-                    />
-                </mat-form-field>
-                </mat-form-field>
-                <mat-form-field>
-                    <mat-label>Confirm Password</mat-label>
-                    <input  matInput
-                        [formControl]="confirmPassword"
-                        type="password"
-                        required
-                        autocomplete="on"
-                        placeholder=""
-                    />
-                </mat-form-field>
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Password</mat-label>
+                <input  matInput
+                    [formControl]="passwd"
+                    type="password"
+                    required
+                    autocomplete="on"
+                    placeholder=""
+                />
+            
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Confirm Password</mat-label>
+                <input  matInput
+                    [formControl]="confirmPassword"
+                    type="password"
+                    required
+                    autocomplete="on"
+                    placeholder=""
+                />
+            </mat-form-field>
     
 
     <button mat-raised-button (click)="register()">Register</button>

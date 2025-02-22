@@ -36,4 +36,25 @@ export class AuthService {
         return sendPasswordResetEmail(this.afAuth, email);
     }
 
+    getErrorCodeMessage(code: string): string {
+        switch (code) {
+          case 'auth/email-already-in-use':
+            return 'This email is already in use';
+          case 'auth/invalid-email':
+            return 'Invalid email';
+          case 'auth/weak-password':
+            return 'Weak password';
+          case 'auth/user-disabled':
+            return 'User disabled';
+          case 'auth/invalid-credential':
+            return 'Password is incorrect';
+          case 'auth/user-not-found':
+            return 'User not found';
+          case 'auth/wrong-password':
+            return 'Wrong password';
+          default:
+            return 'An error occurred';
+        }
+      }
+
 }

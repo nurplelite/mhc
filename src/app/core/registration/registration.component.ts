@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../service/auth.service';
 import { Router } from '@angular/router';
 import { ReactiveFormsModule, FormControl, Validators, FormGroup, FormBuilder } from '@angular/forms';
@@ -20,7 +20,8 @@ import { Timestamp } from '@angular/fire/firestore';
   styleUrl: './registration.component.scss'
 })
 export class RegistrationComponent {
-  
+ readonly regForm = FormGroup;
+
   readonly email = new FormControl('', [Validators.required, Validators.email]);
   readonly passwd = new FormControl('', [Validators.required, Validators.minLength(6), Validators.maxLength(16), Validators.pattern('^(?=.*[0-9])(?=.*[a-zA-Z])([a-zA-Z0-9]+)$')]);
   readonly confirmPassword = new FormControl('', [Validators.required]);
@@ -35,45 +36,35 @@ export class RegistrationComponent {
     private firestore: Firestore,
   ) { }
 
-passwordsMatch(form: FormGroup){
-  return this.passwd === this.confirmPassword;
-}
-  
-    register() {
-    const email = this.email.value === this.passwd.value 
-    ? null
-    : {mismatch: true}
+  ngOninit(){
+    
+  }
 
-    this.authService.registerUser(this.email.value || '', 
-    this.passwd.value || '')
-        .then(() => {
-          this.router.navigate(['/account']);
-        })
-        .catch((err) => {
-          const message =  this.getErrorCodeMessage(err.code);
-          this.snackBar.open(message, 'Close', {
-            duration: 5000
+  pwMatch(pw: string, confirmPw: string){
+    if (pw === confirmPw){
+      return true;
+    }else
+    return false;
+  }
+ 
+  register() {
+    if(this.pwMatch(this.passwd.value || '',this.confirmPassword.value || '')){ 
+      this.authService.registerUser(this.email.value || '', 
+        this.passwd.value || '')
+          .then(() => {
+            this.router.navigate(['/account']);
+          })
+          .catch((err) => {
+            const message =  this.authService.getErrorCodeMessage(err.code);
+            this.snackBar.open(message, 'Close', {
+              duration: 5000
+            });
           });
-        });
+        } else{
+          this.snackBar.open('Passwords do not Match, please try again')
+        }
+
+
   }
-  getErrorCodeMessage(code: string): string {
-    switch (code) {
-      case 'auth/email-already-in-use':
-        return 'This email is already in use';
-      case 'auth/invalid-email':
-        return 'Invalid email';
-      case 'auth/weak-password':
-        return 'Weak password';
-      case 'auth/user-disabled':
-        return 'User disabled';
-      case 'auth/invalid-credential':
-        return 'Password is incorrect';
-      case 'auth/user-not-found':
-        return 'User not found';
-      case 'auth/wrong-password':
-        return 'Wrong password';
-      default:
-        return 'An error occurred';
-    }
-  }
+
 }

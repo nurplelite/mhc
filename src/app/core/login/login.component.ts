@@ -38,7 +38,7 @@ export class LoginComponent {
         this.router.navigate(['/home']);
       })
       .catch((err) => {
-        const message =  this.getErrorCodeMessage(err.code);
+        const message =  this.authService.getErrorCodeMessage(err.code);
         this.snackBar.open(message, 'Close', {
           duration: 5000
         });
@@ -51,7 +51,7 @@ export class LoginComponent {
         this.router.navigate(['/home']);
       })
       .catch((err) => {
-        const message =  this.getErrorCodeMessage(err.code);
+        const message =  this.authService.getErrorCodeMessage(err.code);
         this.snackBar.open(message, 'Close', {
           duration: 5000
         });
@@ -64,7 +64,7 @@ export class LoginComponent {
         this.router.navigate(['/account']);
       })
       .catch((err) => {
-        const message =  this.getErrorCodeMessage(err.code);
+        const message =  this.authService.getErrorCodeMessage(err.code);
         this.snackBar.open(message, 'Close', {
           duration: 5000
         });
@@ -79,31 +79,11 @@ export class LoginComponent {
         });
       })
       .catch((err) => {
-        const message =  this.getErrorCodeMessage(err.code);
+        const message =  this.authService.getErrorCodeMessage(err.code);
         this.snackBar.open(message, 'Close', {
           duration: 5000
         });
       });
   }
 
-  getErrorCodeMessage(code: string): string {
-    switch (code) {
-      case 'auth/email-already-in-use':
-        return 'This email is already in use';
-      case 'auth/invalid-email':
-        return 'Invalid email';
-      case 'auth/weak-password':
-        return 'Weak password';
-      case 'auth/user-disabled':
-        return 'User disabled';
-      case 'auth/invalid-credential':
-        return 'Password is incorrect';
-      case 'auth/user-not-found':
-        return 'User not found';
-      case 'auth/wrong-password':
-        return 'Wrong password';
-      default:
-        return 'An error occurred';
-    }
-  }
 }

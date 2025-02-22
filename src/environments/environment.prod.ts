@@ -1,8 +1,17 @@
 
 
 export const environment = {
-    production: true,
-    APP_TITLE: 'Mad Hare Consulting, LLC',
-    IMAGE_BASE_URL: 'https://firebasestorage.googleapis.com/v0/b/mhc-website-designs.firebasestorage.app/o/MHC%2Fimg%2F',
-    IMAGE_ENCODE: '?alt=media'
-};
+  production: true,
+  appTitle: process.env.APP_TITLE,
+  urlBase: process.env.IMAGE_BASE_URL,
+  imgEncode: process.env.IMG_ENCODE,
+    firebaseConfig: {
+        apiKey: process.env.FIREBASE_API_KEY,
+        authDomain: process.env.FIREBASE_AUTH_DOMAIN,
+        projectId: process.env.FIREBASE_PROJECT_ID,
+        storageBucket: process.env.FIREBASE_STORAGE_BUCKET,
+        messagingSenderId: process.env.FIREBASE_MESSAGING_SENDER_ID,
+        appId: process.env.FIREBASE_APP_ID,
+        measurementId: process.env.FIREBASE_MEASUREMENT_ID
+      }
+    };
