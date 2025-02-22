@@ -1,2 +1,27 @@
-<mat-form-field>
-  <input matInput placeholder="Username" [(ngModel)]="username">
+<mat-card>
+  <mat-card-title>Login</mat-card-title> 
+  <mat-form-field>
+    <mat-label>Username</mat-label>
+    <input  matInput
+            [formControl]="email"
+            type="email"
+            required
+            autocomplete="on"
+            placeholder="poop@butthole.com"
+     />
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Password</mat-label>
+    <input  matInput
+            [formControl]="passwd"
+            type="password"
+            autocomplete="on"
+            placeholder="Password"
+            required
+            title="Password must contain at least one number and one uppercase and lowercase letter, and at least 6 or more characters"
+    />
+  </mat-form-field>
+  <button mat-raised-button (click)="login()">Login</button>
+  <div class='button-label'><span>Don't have an account?</span></div> 
+  <button mat-raised-button (click)="register()">Register</button>
+</mat-card>

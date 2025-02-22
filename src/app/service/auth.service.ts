@@ -15,10 +15,10 @@ export class AuthService {
     constructor(
         private firestore: Firestore,
         private afAuth: Auth,
-        user$: Observable<User>
+      ) {
     
-    ) {
     }
+
 
     login(email: string, passwd: string): Promise<any> {
         return signInWithEmailAndPassword(this.afAuth, email, passwd);
