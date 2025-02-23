@@ -1,4 +1,4 @@
-import { Injectable } from "@angular/core";
+import { Injectable, inject, NgZone } from "@angular/core";
 import { Firestore } from "@angular/fire/firestore";
 import { Auth } from "@angular/fire/auth";
 import { createUserWithEmailAndPassword
@@ -12,28 +12,33 @@ import { Observable } from "rxjs";
 @Injectable ({providedIn: 'root'})  // Injectable
 
 export class AuthService {
-    constructor(
+  private auth = inject(Auth);
+  
+  constructor(
         private firestore: Firestore,
         private afAuth: Auth,
+        private zone: NgZone
       ) {
     
     }
 
 
     login(email: string, passwd: string): Promise<any> {
-        return signInWithEmailAndPassword(this.afAuth, email, passwd);
+        console.log(email, passwd, 'used to attempt login')
+        return this.zone.run(() => signInWithEmailAndPassword(this.afAuth, email, passwd));
     }
 
     logout(): Promise<void> {
-        return signOut(this.afAuth);
+        return this.zone.run(() => signOut(this.afAuth));
     }
 
     registerUser(email: string, passwd: string): Promise<any> {
-        return createUserWithEmailAndPassword(this.afAuth, email, passwd);
+        console.log(email, passwd, ' attempting to register')
+        return this.zone.run(() => createUserWithEmailAndPassword(this.afAuth, email, passwd));
     }
 
     resetPassword(email: string): Promise<void> {
-        return sendPasswordResetEmail(this.afAuth, email);
+        return this.zone.run(() => sendPasswordResetEmail(this.afAuth, email));
     }
 
     getErrorCodeMessage(code: string): string {

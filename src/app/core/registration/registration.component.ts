@@ -48,10 +48,12 @@ export class RegistrationComponent {
   }
  
   register() {
+    console.log('entering registration function');
     if(this.pwMatch(this.passwd.value || '',this.confirmPassword.value || '')){ 
       this.authService.registerUser(this.email.value || '', 
         this.passwd.value || '')
-          .then(() => {
+          .then((credential) => {
+            console.log(this.email, 'successfully registered: ', credential);
             this.router.navigate(['/account']);
           })
           .catch((err) => {

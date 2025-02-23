@@ -5,7 +5,7 @@ export const environment = {
   urlBase: '/assets/images/',
   imgEncode: '',
   firebaseConfig: {
-    apiKey: "AIzaSyAeirLE5nbhWYw9_pIkv46SFJ1r3MTI4O0",
+    apiKey: "AIzaSyAkjYf32s0KoWwaFW54NqWriQAYZBNMxnc",
     authDomain: "mhc-website-designs.firebaseapp.com",
     projectId: "mhc-website-designs",
     storageBucket: "mhc-website-designs.firebasestorage.app",

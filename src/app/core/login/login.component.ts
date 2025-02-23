@@ -34,7 +34,8 @@ export class LoginComponent {
 
   login() {
     this.authService.login(this.email.value || '', this.passwd.value || '')
-      .then(() => {
+      .then((credential) => {
+        console.log(this.email, 'successfuly logged in:', credential);
         this.router.navigate(['/home']);
       })
       .catch((err) => {
@@ -60,7 +61,8 @@ export class LoginComponent {
 
   register() {
     this.authService.registerUser(this.email.value || '', this.passwd.value || '')
-      .then(() => {
+      .then((credential) => {
+        console.log(this.email, 'registration successful for: ', credential);
         this.router.navigate(['/account']);
       })
       .catch((err) => {
