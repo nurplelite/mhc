@@ -3,15 +3,24 @@ const path = './src/environments';
 
 // Ensure the environments directory exists
 if (!fs.existsSync(path)) {
-  fs.mkdirSync(path, { recursive: true }); // Create the folder if it doesn't exist
+  console.log("📁 Creating environments directory...");
+  fs.mkdirSync(path, { recursive: true });
+} else {
+  console.log("✅ Environments directory already exists.");
 }
 
 const targetPath = `${path}/environment.prod.ts`;
 
+// Ensure a placeholder file exists before TypeScript checks for imports
 if (!fs.existsSync(targetPath)) {
-  fs.writeFileSync(targetPath, 'export const environment = {};', { flag: 'w' }); // Create an empty file if it doesn’t exist
+  console.log("📝 Creating placeholder environment.prod.ts...");
+  fs.writeFileSync(targetPath, "export const environment = {};", { flag: 'w' });
+} else {
+  console.log("✅ Placeholder environment.prod.ts already exists.");
 }
 
+// Generate actual environment file
+console.log("⚙️ Writing actual environment.prod.ts...");
 const envConfig = `
 export const environment = {
   production: true,
@@ -34,11 +43,5 @@ export const environment = {
 };
 `;
 
-// Write the content to the target file
-fs.writeFile(targetPath, envConfig, (err) => {
-  if (err) {
-    console.error("Error generating environment file:", err);
-    process.exit(1);
-  }
-  console.log(`✅ Environment file successfully generated at ${targetPath}`);
-});
+fs.writeFileSync(targetPath, envConfig);
+console.log(`✅ Environment file successfully generated at ${targetPath}`);
