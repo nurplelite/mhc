@@ -5,7 +5,7 @@
     "generate-env-dev": "node scripts/generate-env-dev.js",
     "generate-env": "node scripts/generate-env.js",
     "ng": "ng",
-    "start": "ng build && ng serve",
+    "start": "node scripts/generate-env-dev.js && ng build && ng serve",
     "build": "ng build --configuration production",
     "watch": "ng build --watch",
     "test": "ng test"
