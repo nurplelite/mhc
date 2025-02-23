@@ -1,12 +1,13 @@
-// scripts/generate-env.js
-
 const fs = require('fs');
-require('dotenv').config();
+const path = './src/environments';
 
-// Path where the environment file will be generated
-const targetPath = './src/environments/environment.prod.ts';
+// Ensure the environments directory exists
+if (!fs.existsSync(path)) {
+  fs.mkdirSync(path, { recursive: true }); // Create the folder if it doesn't exist
+}
 
-// Create the content of the environment.prod.ts file dynamically using environment variables
+const targetPath = `${path}/environment.prod.ts`;
+
 const envConfig = `
 export const environment = {
   production: true,
@@ -29,11 +30,11 @@ export const environment = {
 };
 `;
 
-// Write the content to the target environment.prod.ts file
+// Write the content to the target file
 fs.writeFile(targetPath, envConfig, (err) => {
   if (err) {
     console.error("Error generating environment file:", err);
     process.exit(1);
   }
-  console.log(`Environment file successfully generated at ${targetPath}`);
+  console.log(`✅ Environment file successfully generated at ${targetPath}`);
 });
