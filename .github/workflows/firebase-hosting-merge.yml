@@ -33,7 +33,7 @@ jobs:
         run: node scripts/generate-env.js
 
       - name: Build Angular Project
-        run: npm run build --configuration production
+        run: npm run build
 
       - name: Deploy to Firebase Hosting
         uses: FirebaseExtended/action-hosting-deploy@v0
