@@ -12,7 +12,7 @@ import { environment } from '../environments/environment';
   styleUrl: './app.component.scss'
 })
 export class AppComponent implements OnInit {
-  title = environment.APP_TITLE;
+  title = environment.appTitle;
 
   // constructor(private themeService: ThemeService) {
   //   this.themeService.setTheme(this.themeService.getCurrentTheme());

@@ -11,7 +11,7 @@ import { environment } from '../../../environments/environment';
   styleUrl: './services.component.scss'
 })
 export class ServicesComponent {
-  Company = environment.APP_TITLE;
-  ImgUrl = environment.IMAGE_BASE_URL;
-  ImgEncode = environment.IMAGE_ENCODE;
+  Company = environment.appTitle;
+  ImgUrl = environment.urlBase;
+  ImgEncode = environment.imgEncode;
 }

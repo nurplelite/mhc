@@ -12,7 +12,7 @@ import { LoginComponent } from '../../core/login/login.component';
   styleUrl: './home.component.scss'
 })
 export class HomeComponent {
-  Company = environment.APP_TITLE;
-  ImgUrl = environment.IMAGE_BASE_URL;
-  ImgEncode = environment.IMAGE_ENCODE;
+  Company = environment.appTitle;
+  ImgUrl = environment.urlBase;
+  ImgEncode = environment.imgEncode;
 }

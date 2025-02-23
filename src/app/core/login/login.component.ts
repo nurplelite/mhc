@@ -9,11 +9,14 @@ import { User } from '../../models/user.model';
 import { Observable } from 'rxjs';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
-
+import { Firestore } from '@angular/fire/firestore';
+import { doc, getDoc, setDoc } from '@angular/fire/firestore';
+import { Timestamp } from '@angular/fire/firestore';
+import { RegistrationComponent } from '../registration/registration.component';
 
 @Component({
   selector: 'app-login',
-  imports: [ReactiveFormsModule, MatInputModule, MatFormFieldModule, MatButtonModule, MatCardModule],
+  imports: [ReactiveFormsModule, MatInputModule, MatFormFieldModule, MatButtonModule, MatCardModule, RegistrationComponent],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss'
 })
@@ -31,11 +34,12 @@ export class LoginComponent {
 
   login() {
     this.authService.login(this.email.value || '', this.passwd.value || '')
-      .then(() => {
+      .then((credential) => {
+        console.log(this.email, 'successfuly logged in:', credential);
         this.router.navigate(['/home']);
       })
       .catch((err) => {
-        const message =  this.getErrorCodeMessage(err.code);
+        const message =  this.authService.getErrorCodeMessage(err.code);
         this.snackBar.open(message, 'Close', {
           duration: 5000
         });
@@ -48,7 +52,7 @@ export class LoginComponent {
         this.router.navigate(['/home']);
       })
       .catch((err) => {
-        const message =  this.getErrorCodeMessage(err.code);
+        const message =  this.authService.getErrorCodeMessage(err.code);
         this.snackBar.open(message, 'Close', {
           duration: 5000
         });
@@ -57,11 +61,12 @@ export class LoginComponent {
 
   register() {
     this.authService.registerUser(this.email.value || '', this.passwd.value || '')
-      .then(() => {
+      .then((credential) => {
+        console.log(this.email, 'registration successful for: ', credential);
         this.router.navigate(['/account']);
       })
       .catch((err) => {
-        const message =  this.getErrorCodeMessage(err.code);
+        const message =  this.authService.getErrorCodeMessage(err.code);
         this.snackBar.open(message, 'Close', {
           duration: 5000
         });
@@ -76,31 +81,11 @@ export class LoginComponent {
         });
       })
       .catch((err) => {
-        const message =  this.getErrorCodeMessage(err.code);
+        const message =  this.authService.getErrorCodeMessage(err.code);
         this.snackBar.open(message, 'Close', {
           duration: 5000
         });
       });
   }
 
-  getErrorCodeMessage(code: string): string {
-    switch (code) {
-      case 'auth/email-already-in-use':
-        return 'This email is already in use';
-      case 'auth/invalid-email':
-        return 'Invalid email';
-      case 'auth/weak-password':
-        return 'Weak password';
-      case 'auth/user-disabled':
-        return 'User disabled';
-      case 'auth/invalid-credential':
-        return 'Password is incorrect';
-      case 'auth/user-not-found':
-        return 'User not found';
-      case 'auth/wrong-password':
-        return 'Wrong password';
-      default:
-        return 'An error occurred';
-    }
-  }
 }
