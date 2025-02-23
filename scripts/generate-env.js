@@ -1,10 +1,18 @@
 const fs = require('fs');
 const path = './src/environments';
 
-// Ensure the environments directory exists
+// Ensure the environments directory exists and verify it
 if (!fs.existsSync(path)) {
   console.log("📁 Creating environments directory...");
   fs.mkdirSync(path, { recursive: true });
+
+  // Double-check if the folder was successfully created
+  if (fs.existsSync(path)) {
+    console.log(`✅ Directory created: ${path}`);
+  } else {
+    console.error(`❌ ERROR: Directory ${path} was NOT created!`);
+    process.exit(1);
+  }
 } else {
   console.log("✅ Environments directory already exists.");
 }
@@ -46,12 +54,8 @@ export const environment = {
 fs.writeFileSync(targetPath, envConfig);
 console.log(`✅ Environment file successfully generated at ${targetPath}`);
 
-// **Explicitly confirm file creation**
-if (fs.existsSync(targetPath)) {
-  console.log(`🎉 CONFIRM: ${targetPath} exists!`);
-  console.log("🔍 File contents:");
-  console.log(fs.readFileSync(targetPath, 'utf8'));
-} else {
-  console.error("❌ ERROR: environment.prod.ts was NOT created!");
-  process.exit(1);
-}
+// Explicitly check the folder contents to verify
+console.log("📂 Listing src/environments/ contents:");
+fs.readdirSync(path).forEach(file => {
+  console.log(" - " + file);
+});

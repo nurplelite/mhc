@@ -32,6 +32,17 @@ jobs:
       - name: Generate Production Environment File
         run: node scripts/generate-env.js
 
+      - name: Verify Environment Folder and File
+        run: |
+          echo "🔍 Checking if src/environments/ exists..."
+          ls -l src || echo "❌ ERROR: src/ does not exist!"
+          ls -l src/environments/ || echo "❌ ERROR: src/environments/ does not exist!"
+          if [ ! -f "src/environments/environment.prod.ts" ]; then
+            echo "❌ ERROR: environment.prod.ts is missing before build!"
+            exit 1
+          fi
+          echo "✅ environment.prod.ts is still present."
+
       - name: Build Angular Project
         run: npm run build
 
