@@ -45,3 +45,13 @@ export const environment = {
 
 fs.writeFileSync(targetPath, envConfig);
 console.log(`✅ Environment file successfully generated at ${targetPath}`);
+
+// **Explicitly confirm file creation**
+if (fs.existsSync(targetPath)) {
+  console.log(`🎉 CONFIRM: ${targetPath} exists!`);
+  console.log("🔍 File contents:");
+  console.log(fs.readFileSync(targetPath, 'utf8'));
+} else {
+  console.error("❌ ERROR: environment.prod.ts was NOT created!");
+  process.exit(1);
+}
