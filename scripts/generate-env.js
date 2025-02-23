@@ -46,7 +46,7 @@ export const environment = {
 fs.writeFileSync(prodTargetPath, envConfig);
 console.log(`✅ environment.prod.ts successfully generated.`);
 
-// Ensure `environment.ts` exists, even if it’s empty
+// Ensure `environment.ts` exists, even if it’s empty adding to push
 if (!fs.existsSync(devTargetPath)) {
   fs.writeFileSync(devTargetPath, envConfig);
   console.log(`✅ environment.ts created for TypeScript compatibility.`);
