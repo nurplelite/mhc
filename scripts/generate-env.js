@@ -9,7 +9,7 @@ if (!fs.existsSync(path)) {
 const targetPath = `${path}/environment.prod.ts`;
 
 if (!fs.existsSync(targetPath)) {
-  fs.writeFileSync(targetPath, '', { flag: 'w' }); // Create an empty file if it doesn’t exist
+  fs.writeFileSync(targetPath, 'export const environment = {};', { flag: 'w' }); // Create an empty file if it doesn’t exist
 }
 
 const envConfig = `
