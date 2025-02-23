@@ -1,5 +1,5 @@
 <mat-card>
-    <mat-card-title>Register</mat-card-title> 
+    <mat-card-title>Register</mat-card-title>
             <mat-form-field>
                 <mat-label>First Name</mat-label>
                 <input  matInput
@@ -49,7 +49,7 @@
                     autocomplete="on"
                     placeholder=""
                 />
-            
+
             </mat-form-field>
             <mat-form-field>
                 <mat-label>Confirm Password</mat-label>
@@ -61,7 +61,12 @@
                     placeholder=""
                 />
             </mat-form-field>
-    
+
 
     <button mat-raised-button (click)="register()">Register</button>
+</mat-card>
+
+<mat-card>
+  <mat-card-title>Logging</mat-card-title>
+  <mat-card-content>{{logMsg}}</mat-card-content>
 </mat-card>

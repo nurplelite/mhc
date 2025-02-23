@@ -25,11 +25,13 @@ import { RegistrationComponent } from '../registration/registration.component';
 export class LoginComponent {
   readonly email = new FormControl('', [Validators.required, Validators.email]);
   readonly passwd = new FormControl('', [Validators.required, Validators.minLength(6), Validators.maxLength(16), Validators.pattern('^(?=.*[0-9])(?=.*[a-zA-Z])([a-zA-Z0-9]+)$')]);
+  public logMsg = '';
 
   constructor(
     private authService: AuthService,
     private router: Router,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+
   ) {
 
   }
@@ -37,7 +39,7 @@ export class LoginComponent {
   login() {
     this.authService.login(this.email.value || '', this.passwd.value || '')
       .then((credential) => {
-        console.log(this.email, 'successfuly logged in:', credential);
+        this.logMsg+='user logged in:' + credential;
         this.router.navigate(['/home']);
       })
       .catch((err) => {

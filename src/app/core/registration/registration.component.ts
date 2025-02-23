@@ -20,7 +20,8 @@ import { Timestamp } from '@angular/fire/firestore';
   styleUrl: './registration.component.scss'
 })
 export class RegistrationComponent {
- readonly regForm = FormGroup;
+  readonly regForm = FormGroup;
+  public logMsg = '';
 
   readonly email = new FormControl('', [Validators.required, Validators.email]);
   readonly passwd = new FormControl('', [Validators.required, Validators.minLength(6), Validators.maxLength(16), Validators.pattern('^(?=.*[0-9])(?=.*[a-zA-Z])([a-zA-Z0-9]+)$')]);
@@ -37,7 +38,7 @@ export class RegistrationComponent {
   ) { }
 
   ngOninit(){
-    
+
   }
 
   pwMatch(pw: string, confirmPw: string){
@@ -46,13 +47,14 @@ export class RegistrationComponent {
     }else
     return false;
   }
- 
+
   register() {
     console.log('entering registration function');
-    if(this.pwMatch(this.passwd.value || '',this.confirmPassword.value || '')){ 
-      this.authService.registerUser(this.email.value || '', 
+    if(this.pwMatch(this.passwd.value || '',this.confirmPassword.value || '')){
+      this.authService.registerUser(this.email.value || '',
         this.passwd.value || '')
           .then((credential) => {
+            this.logMsg += 'user registered as:' + credential;
             console.log(this.email, 'successfully registered: ', credential);
             this.router.navigate(['/account']);
           })
