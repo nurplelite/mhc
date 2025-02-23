@@ -1,34 +1,29 @@
 const fs = require('fs');
-const path = './src/environments';
+const path = './src/environments';  // Make sure we're always using the correct relative path
 
-// Ensure the environments directory exists and verify it
+// Ensure the environments directory exists
 if (!fs.existsSync(path)) {
-  console.log("📁 Creating environments directory...");
+  console.log(`📁 Creating environments directory at: ${path}`);
   fs.mkdirSync(path, { recursive: true });
-
-  // Double-check if the folder was successfully created
-  if (fs.existsSync(path)) {
-    console.log(`✅ Directory created: ${path}`);
-  } else {
-    console.error(`❌ ERROR: Directory ${path} was NOT created!`);
-    process.exit(1);
-  }
 } else {
-  console.log("✅ Environments directory already exists.");
+  console.log(`✅ Environments directory already exists at: ${path}`);
 }
 
-const targetPath = `${path}/environment.prod.ts`;
+const targetPath = `${path}/environment.prod.ts`;  // Ensure this is correctly set
+
+// Log where the script is writing the file
+console.log(`📌 Target environment file path: ${targetPath}`);
 
 // Ensure a placeholder file exists before TypeScript checks for imports
 if (!fs.existsSync(targetPath)) {
-  console.log("📝 Creating placeholder environment.prod.ts...");
+  console.log(`📝 Creating placeholder at: ${targetPath}`);
   fs.writeFileSync(targetPath, "export const environment = {};", { flag: 'w' });
 } else {
-  console.log("✅ Placeholder environment.prod.ts already exists.");
+  console.log(`✅ Placeholder file already exists at: ${targetPath}`);
 }
 
 // Generate actual environment file
-console.log("⚙️ Writing actual environment.prod.ts...");
+console.log(`⚙️ Writing actual environment.prod.ts to: ${targetPath}`);
 const envConfig = `
 export const environment = {
   production: true,
@@ -52,10 +47,12 @@ export const environment = {
 `;
 
 fs.writeFileSync(targetPath, envConfig);
-console.log(`✅ Environment file successfully generated at ${targetPath}`);
+console.log(`✅ Environment file successfully generated at: ${targetPath}`);
 
-// Explicitly check the folder contents to verify
-console.log("📂 Listing src/environments/ contents:");
-fs.readdirSync(path).forEach(file => {
-  console.log(" - " + file);
-});
+// Explicitly confirm the file exists in the correct place
+if (fs.existsSync(targetPath)) {
+  console.log(`🎉 CONFIRM: ${targetPath} is present.`);
+} else {
+  console.error(`❌ ERROR: ${targetPath} was NOT created!`);
+  process.exit(1);
+}
