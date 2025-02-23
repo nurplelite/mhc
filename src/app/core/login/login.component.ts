@@ -15,7 +15,7 @@ import { Timestamp } from '@angular/fire/firestore';
 import { RegistrationComponent } from '../registration/registration.component';
 
 
-//testing git push
+
 @Component({
   selector: 'app-login',
   imports: [ReactiveFormsModule, MatInputModule, MatFormFieldModule, MatButtonModule, MatCardModule, RegistrationComponent],
