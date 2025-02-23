@@ -1,5 +1,5 @@
 const fs = require('fs');
-const path = './src/environments';  // Make sure we're always using the correct relative path
+const path = './src/environments';
 
 // Ensure the environments directory exists
 if (!fs.existsSync(path)) {
@@ -9,21 +9,18 @@ if (!fs.existsSync(path)) {
   console.log(`✅ Environments directory already exists at: ${path}`);
 }
 
-const targetPath = `${path}/environment.prod.ts`;  // Ensure this is correctly set
+// Define both environment file paths
+const prodTargetPath = `${path}/environment.prod.ts`;
+const devTargetPath = `${path}/environment.ts`;  // Ensure a development version exists too
 
-// Log where the script is writing the file
-console.log(`📌 Target environment file path: ${targetPath}`);
-
-// Ensure a placeholder file exists before TypeScript checks for imports
-if (!fs.existsSync(targetPath)) {
-  console.log(`📝 Creating placeholder at: ${targetPath}`);
-  fs.writeFileSync(targetPath, "export const environment = {};", { flag: 'w' });
-} else {
-  console.log(`✅ Placeholder file already exists at: ${targetPath}`);
+// Ensure placeholder files exist before TypeScript checks for imports
+if (!fs.existsSync(devTargetPath)) {
+  console.log(`📝 Creating placeholder at: ${devTargetPath}`);
+  fs.writeFileSync(devTargetPath, "export const environment = {};", { flag: 'w' });
 }
 
-// Generate actual environment file
-console.log(`⚙️ Writing actual environment.prod.ts to: ${targetPath}`);
+// Generate actual production environment file
+console.log(`⚙️ Writing actual environment.prod.ts to: ${prodTargetPath}`);
 const envConfig = `
 export const environment = {
   production: true,
@@ -46,13 +43,19 @@ export const environment = {
 };
 `;
 
-fs.writeFileSync(targetPath, envConfig);
-console.log(`✅ Environment file successfully generated at: ${targetPath}`);
+fs.writeFileSync(prodTargetPath, envConfig);
+console.log(`✅ environment.prod.ts successfully generated.`);
 
-// Explicitly confirm the file exists in the correct place
-if (fs.existsSync(targetPath)) {
-  console.log(`🎉 CONFIRM: ${targetPath} is present.`);
+// Ensure `environment.ts` exists, even if it’s empty
+if (!fs.existsSync(devTargetPath)) {
+  fs.writeFileSync(devTargetPath, envConfig);
+  console.log(`✅ environment.ts created for TypeScript compatibility.`);
+}
+
+// Confirm both files exist
+if (fs.existsSync(prodTargetPath) && fs.existsSync(devTargetPath)) {
+  console.log(`🎉 CONFIRM: Both environment files are present.`);
 } else {
-  console.error(`❌ ERROR: ${targetPath} was NOT created!`);
+  console.error(`❌ ERROR: One or both environment files were NOT created!`);
   process.exit(1);
 }
