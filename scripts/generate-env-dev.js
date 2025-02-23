@@ -21,6 +21,10 @@ export const environment = {
     messagingSenderId: "${process.env.FIREBASE_MESSAGING_SENDER_ID}",
     appId: "${process.env.FIREBASE_APP_ID}",
     measurementId: "${process.env.FIREBASE_MEASUREMENT_ID}"
+  },
+  qbConfig: {
+    clientId: "${process.env.QB_CLIENT_ID_DEV}",
+    clientSecret: "${process.env.QB_CLIENT_SECRET_DEV}"
   }
 };
 `;
