@@ -60,6 +60,7 @@ export class RegistrationComponent {
           })
           .catch((err) => {
             const message =  this.authService.getErrorCodeMessage(err.code);
+            this.logMsg = err;
             this.snackBar.open(message, 'Close', {
               duration: 5000
             });
