@@ -1,17 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { AuthService } from '../../service/auth.service';
 import { Router } from '@angular/router';
 import { ReactiveFormsModule, FormControl, Validators, FormGroup, FormBuilder } from '@angular/forms';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { User } from '../../models/user.model';
-import { Observable } from 'rxjs';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
-import { Firestore } from '@angular/fire/firestore';
-import { doc, getDoc, setDoc } from '@angular/fire/firestore';
-import { Timestamp } from '@angular/fire/firestore';
+
 
 @Component({
   selector: 'app-registration',
@@ -21,6 +17,7 @@ import { Timestamp } from '@angular/fire/firestore';
 })
 export class RegistrationComponent {
   readonly regForm = FormGroup;
+  private  authService = inject(AuthService);
   public logMsg = '';
 
   readonly email = new FormControl('', [Validators.required, Validators.email]);
@@ -31,10 +28,9 @@ export class RegistrationComponent {
   readonly displayName = new FormControl('', [Validators.required]);
 
   constructor(
-    private authService: AuthService,
+    //private authService: AuthService,
     private router: Router,
     private snackBar: MatSnackBar,
-    private firestore: Firestore,
   ) { }
 
   ngOninit(){
@@ -54,7 +50,6 @@ export class RegistrationComponent {
       this.authService.registerUser(this.email.value || '',
         this.passwd.value || '')
           .then((credential) => {
-            this.logMsg += 'user registered as:' + credential;
             console.log(this.email, 'successfully registered: ', credential);
             this.router.navigate(['/account']);
           })

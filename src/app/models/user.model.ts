@@ -2,6 +2,7 @@ import { Timestamp } from '@angular/fire/firestore';
 
 export interface User {
   uId: string;
+  firebaseId: string;
   email: string;
   displayName?: string;
   firstName?: string;
@@ -15,5 +16,7 @@ export interface User {
     modifiedAt: Timestamp;
     modifiedBy: string;
   };
-  clientId?: string[];
+  lastLogin: Timestamp;
+  active: boolean;
+  clientId?: string;
   };
