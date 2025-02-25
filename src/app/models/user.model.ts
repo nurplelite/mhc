@@ -16,6 +16,7 @@ export interface User {
     modifiedAt: Timestamp;
     modifiedBy: string;
   };
+  sessionId: string;
   lastLogin: Timestamp;
   active: boolean;
   clientId?: string;

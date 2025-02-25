@@ -24,9 +24,9 @@ import { RegistrationComponent } from '../registration/registration.component';
   styleUrl: './login.component.scss'
 })
 export class LoginComponent {
-  readonly email = new FormControl('', [Validators.required, Validators.email]);
-  readonly passwd = new FormControl('', [Validators.required, Validators.minLength(6), Validators.maxLength(16), Validators.pattern('^(?=.*[0-9])(?=.*[a-zA-Z])([a-zA-Z0-9]+)$')]);
-  public logMsg = '';
+  readonly email = new FormControl('', [Validators.required, Validators.email])
+  readonly passwd = new FormControl('', [Validators.required, Validators.minLength(6), Validators.maxLength(16), Validators.pattern('^(?=.*[0-9])(?=.*[a-zA-Z])([a-zA-Z0-9]+)$')])
+  public logMsg = ''
 
   constructor(
     private authService: AuthService,
@@ -40,15 +40,15 @@ export class LoginComponent {
   login() {
     this.authService.login(this.email.value || '', this.passwd.value || '')
       .then((credential) => {
-        this.logMsg += 'user logged in:' + credential;
-        this.router.navigate(['/home']);
+        this.logMsg += 'user logged in:' + credential
+        this.router.navigate(['/home'])
       })
       .catch((err) => {
-        const message = this.authService.getErrorCodeMessage(err.code);
+        const message = this.authService.getErrorCodeMessage(err.code)
         this.snackBar.open(message, 'Close', {
           duration: 5000
-        });
-      });
+        })
+      })
   }
 
   /**
@@ -57,14 +57,14 @@ export class LoginComponent {
   logout() {
     this.authService.logout()
       .then(() => {
-        this.router.navigate(['/home']);
+        this.router.navigate(['/home'])
       })
       .catch((err) => {
-        const message = this.authService.getErrorCodeMessage(err.code);
+        const message = this.authService.getErrorCodeMessage(err.code)
         this.snackBar.open(message, 'Close', {
           duration: 5000
-        });
-      });
+        })
+      })
   }
 
   /**
@@ -73,15 +73,15 @@ export class LoginComponent {
   register() {
     this.authService.registerUser(this.email.value || '', this.passwd.value || '')
       .then((credential) => {
-        console.log(this.email, 'registration successful for: ', credential);
-        this.router.navigate(['/account']);
+        console.log(this.email, 'registration successful for: ', credential)
+        this.router.navigate(['/account'])
       })
       .catch((err) => {
-        const message = this.authService.getErrorCodeMessage(err.code);
+        const message = this.authService.getErrorCodeMessage(err.code)
         this.snackBar.open(message, 'Close', {
           duration: 5000
-        });
-      });
+        })
+      })
   }
 
   /**
@@ -92,13 +92,13 @@ export class LoginComponent {
       .then(() => {
         this.snackBar.open('Password reset email sent', 'Close', {
           duration: 5000
-        });
+        })
       })
       .catch((err) => {
-        const message = this.authService.getErrorCodeMessage(err.code);
+        const message = this.authService.getErrorCodeMessage(err.code)
         this.snackBar.open(message, 'Close', {
           duration: 5000
-        });
-      });
+        })
+      })
   }
 }
