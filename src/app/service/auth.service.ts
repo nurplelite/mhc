@@ -1,5 +1,5 @@
 import { Injectable, inject, NgZone } from '@angular/core'
-import { Auth } from '@angular/fire/auth'
+import { Auth, authState } from '@angular/fire/auth'
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, sendPasswordResetEmail, signOut } from '@angular/fire/auth'
 import { BehaviorSubject, Observable } from 'rxjs'
 import { UserService } from './user.service'
@@ -14,8 +14,8 @@ export class AuthService {
   private zone = inject(NgZone)
   private userService = inject(UserService)
   private user: User | null = null
-
-  constructor() {}
+  private authStateSubject = new BehaviorSubject<User | null>(null)
+  public authState$ = authState(this.afAuth)
 
   /**
    * Logs in a user with email and password.
@@ -33,7 +33,7 @@ export class AuthService {
         }
       }
       if (this.user) {
-        this.userService.assignUser(this.user)
+        this.userService.getUser(this.user.uId || '')
       }
       return 'Login successful'
     } catch (error: any) {

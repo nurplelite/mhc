@@ -1,16 +1,23 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core'
+import { AngularFirestore } from '@angular/fire/compat/firestore'
+import { Observable } from 'rxjs'
+import { map } from 'rxjs/operators'
 
-/**
- * Service to handle Firestore-related operations.
- */
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable({ providedIn: 'root' })
 export class FirestoreService {
+  private firestore = inject(AngularFirestore)
 
-  constructor() { }
+  getDocument<T>(collection: string, docId: string): Observable<T | null> {
+    return this.firestore.collection<T>(collection).doc(docId).get().pipe(
+      map((doc) => (doc.exists ? (doc.data() as T) : null))
+    )
+  }
 
-  fetchDocument(): void {
-    console.log('Fetching document...')
+  async createDocument<T>(collection: string, docId: string, data: T): Promise<void> {
+    await this.firestore.collection(collection).doc(docId).set(data)
+  }
+
+  async updateDocument<T>(collection: string, docId: string, data: Partial<T>): Promise<void> {
+    await this.firestore.collection(collection).doc(docId).update(data)
   }
 }
