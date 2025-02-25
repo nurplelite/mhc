@@ -9,4 +9,8 @@ import { Injectable } from '@angular/core';
 export class FirestoreService {
 
   constructor() { }
+
+  fetchDocument(): void {
+    console.log('Fetching document...')
+  }
 }

@@ -1,22 +1,22 @@
 import { Timestamp } from '@angular/fire/firestore';
 
 export interface User {
-  uId: string;
-  firebaseId: string;
-  email: string;
+  uId?: string;
+  firebaseId?: string;
+  email?: string;
   displayName?: string;
   firstName?: string;
   lastName?: string;
-  role: 'admin' | 'customer';
-  created: {
+  role?: 'admin' | 'customer' | 'new';
+  created?: {
     createdAt: Timestamp;
     createdBy: string;
   }
-  modified: {
+  modified?: {
     modifiedAt: Timestamp;
     modifiedBy: string;
   };
-  lastLogin: Timestamp;
-  active: boolean;
+  lastLogin?: Timestamp;
+  active?: boolean;
   clientId?: string;
   };
