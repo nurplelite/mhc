@@ -1,30 +1,31 @@
 <mat-card>
-  <mat-card-title>Register</mat-card-title>
-  <form [formGroup]="regForm" (ngSubmit)="register()">
-      <mat-form-field>
-          <mat-label>First Name</mat-label>
-          <input matInput formControlName="firstName" type="text" required autocomplete="on" placeholder="" />
-      </mat-form-field>
-      <mat-form-field>
-          <mat-label>Last Name</mat-label>
-          <input matInput formControlName="lastName" type="text" required autocomplete="on" placeholder="" />
-      </mat-form-field>
-      <mat-form-field>
-          <mat-label>Display Name</mat-label>
-          <input matInput formControlName="displayName" type="text" required autocomplete="on" placeholder="" />
-      </mat-form-field>
-      <mat-form-field>
-          <mat-label>Email</mat-label>
-          <input matInput formControlName="email" required type="email" autocomplete="on" placeholder="" />
-      </mat-form-field>
-      <mat-form-field>
-          <mat-label>Password</mat-label>
-          <input matInput formControlName="passwd" type="password" required autocomplete="on" placeholder="" />
-      </mat-form-field>
-      <mat-form-field>
-          <mat-label>Confirm Password</mat-label>
-          <input matInput formControlName="confirmPassword" type="password" required autocomplete="on" placeholder="" />
-      </mat-form-field>
-      <button mat-raised-button type="submit" [disabled]="regForm.invalid">Register</button>
-  </form>
-</mat-card>
+    <mat-card-title>Register</mat-card-title>
+    <form [formGroup]="regForm" (ngSubmit)="register()">
+        <mat-form-field>
+            <mat-label>First Name</mat-label>
+            <input matInput formControlName="firstName" type="text" required autocomplete="on" placeholder="" />
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Last Name</mat-label>
+            <input matInput formControlName="lastName" type="text" required autocomplete="on" placeholder="" />
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Display Name</mat-label>
+            <input matInput formControlName="displayName" type="text" required autocomplete="on" placeholder="" />
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Email</mat-label>
+            <input matInput formControlName="email" required type="email" autocomplete="on" placeholder="" />
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Password</mat-label>
+            <input matInput formControlName="passwd" type="password" required autocomplete="on" placeholder="" />
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Confirm Password</mat-label>
+            <input matInput formControlName="confirmPassword" type="password" required autocomplete="on" placeholder="" />
+        </mat-form-field>
+        <button mat-raised-button type="submit" [disabled]="!isValid()" >Register</button>
+    </form>
+  </mat-card>
+  

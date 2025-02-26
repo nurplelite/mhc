@@ -27,9 +27,9 @@ export class AuthService {
     try {
       console.log(email, ' used to attempt login')
       const credential = await this.zone.run(() => signInWithEmailAndPassword(this.afAuth, email, passwd))
-      if(credential.user){
+      if (credential.user) {
         this.user = {
-        uId: credential.user.uid
+          uId: credential.user.uid
         }
       }
       if (this.user) {
@@ -66,8 +66,11 @@ export class AuthService {
           firstName: form.firstName || '',
           lastName: form.lastName || '',
           uId: credential.user.uid,
+        
         }
-        await this.userService.createUser(this.user)
+        await this.zone.run(() => this.userService.createUser(this.user))
+      } else {
+        throw new Error('User credential is null')
       }
       return 'Registration successful'
     } catch (error: any) {

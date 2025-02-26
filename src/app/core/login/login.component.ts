@@ -7,14 +7,16 @@ import { MatInputModule } from '@angular/material/input'
 import { MatFormFieldModule } from '@angular/material/form-field'
 import { MatButtonModule } from '@angular/material/button'
 import { MatCardModule } from '@angular/material/card'
+import { RegistrationComponent } from '../registration/registration.component'
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [ReactiveFormsModule, MatInputModule, MatFormFieldModule, MatButtonModule, MatCardModule],
+  imports: [MatCardModule, ReactiveFormsModule, MatInputModule, MatFormFieldModule, MatButtonModule, RegistrationComponent],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss'
 })
+
 export class LoginComponent {
   private authService = inject(AuthService)
   private router = inject(Router)
