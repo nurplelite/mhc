@@ -9,7 +9,7 @@ import { CardsComponent } from './components/cards.component';
   imports: [FooterComponent, RouterModule, HeaderComponent, CardsComponent],
   selector: 'app-root',
   template: `
-    <div class="max-w-auto-xl mx-auto px-4">
+    <div class="max-w- mx-auto px-2">
       <app-header></app-header>
       <app-cards></app-cards>
       <app-footer></app-footer>
