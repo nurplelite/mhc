@@ -22,51 +22,25 @@ import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
     IftaLabelModule
   ],
   template: `
-<div class="relative isolate overflow-hidden -z-20 bg-gradient-to-tr from-[#0B1120] to-[#1F2937]">
-
-  <!-- Noise Texture Layer -->
-  <div class="absolute inset-0 bg-[url('/assets/noise.png')] opacity-10 mix-blend-overlay"></div>
-
-  <!-- Misty Blur Polygon -->
-  <div aria-hidden="true" class="absolute left-1/2 top-0 -translate-x-1/2 sm:left-[calc(50%-18rem)] lg:left-12 xl:left-[calc(50%-24rem)]">
-    <div class="aspect-[1108/632] w-[69.25rem] bg-gradient-to-r from-[#80CAFF] to-[#4F46E5] opacity-20 blur-[200px] clip-path-polygon"></div>
-  </div>
-
-  <!-- Main Content -->
-  <div class="relative z-10 content-container">
-    <div class="content-inner">
-      <h1 class="content-title">
-        Hardscapes for your home. Excavation and Plowing for your business all year round.
+  <!-- Content -->
+  <div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 flex flex-col-reverse sm:flex-col lg:flex-row items-center">
+    <div class="max-w-2xl text-center lg:text-left">
+      <h1 class="text-3xl font-extrabold tracking-tight text-white sm:text-5xl">
+        Hardscapes for your home. Excavation and Plowing for your business.
       </h1>
-      <p class="content-description">
+      <h2 class="mt-6 text-2xl leading-8 text-white">
+        All. Year. Round.
+      </h2>
+      <p class="mt-6 text-lg leading-8 text-gray-300">
         Whether you want to create the perfect outdoor space to entertain, or you need rugged professionals to move earth and snow for your business.
       </p>
-
-      <div class="action-buttons">
-        <p-button
-          label="Get a Quote"
-          [rounded]="true"
-          severity="success"
-          (click)="showForm()"
-        ></p-button>
+      <div class="mt-10 flex items-center justify-center gap-x-6 lg:justify-start">
+        <p-button label="Get a Quote" [rounded]="true" severity="success" (click)="showForm()"></p-button>
       </div>
     </div>
 
-    <!-- Logo -->
-    <div class="image-container">
-      <div class="image-wrapper">
-        <img
-          alt="DJPS Logo"
-          src="https://storage.googleapis.com/mhc-assets/djps/djps-v2.png"
-          class="logo-image"
-        />
-      </div>
-    </div>
-  </div>
-
-  <!-- Contact Dialog -->
-  <div class="contact-dialog">
-    <p-dialog header="Contact Form" [modal]="true" [(visible)]="visible" [style]="{ width: '20rem' }">
+    <div class="contact-dialog">
+    <p-dialog header="Contact Form" maskStyleClass="backdrop-blur-sm" [modal]="true" [(visible)]="visible" [style]="{ width: '20rem' }">
       <form *ngIf="contactData" [formGroup]="contactData" (ngSubmit)="submitForm()" class="contact-form">
         <div class="form-fields">
           <p-iftalabel>
@@ -107,7 +81,10 @@ import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
     </p-dialog>
   </div>
 
-</div>
+    <div class="image-container">
+      <img src="https://storage.googleapis.com/mhc-assets/djps/djps-v2.png" alt="DJPS Logo" class="image-wrapper" />
+    </div>
+  </div>
   `,
   styles: `
 /* --- Custom Clip Path for the Blur Polygon --- */
@@ -119,6 +96,22 @@ import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
   );
 }
 
+@keyframes mist {
+  0% {
+    transform: translateX(0) translateY(0);
+  }
+  50% {
+    transform: translateX(20px) translateY(10px);
+  }
+  100% {
+    transform: translateX(0) translateY(0);
+  }
+}
+
+.animate-mist {
+  animation: mist 30s ease-in-out infinite;
+}
+
 /* --- Content Styling --- */
 .content-container {
   margin: 0 auto;
@@ -126,6 +119,8 @@ import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
   max-width: 80rem;
   display: flex;
   flex-direction: column-reverse;
+  background: var(--surface-400);
+
 
   @media (min-width: 640px) {
     padding-bottom: 8rem;
@@ -172,7 +167,7 @@ import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
   overflow: visible;
 }
 .image-wrapper {
-  margin-top: 2.5rem;
+  margin-top: -1rem;
   align-self: flex-end;
 }
 .logo-image {
