@@ -10,7 +10,7 @@ import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { ApiService } from '../services/api.service';
 import { BehaviorSubject } from 'rxjs';
 import { MessageService } from 'primeng/api';
-
+import { Toast } from 'primeng/toast';
 
 @Component({
   selector: 'app-header',
@@ -23,7 +23,8 @@ import { MessageService } from 'primeng/api';
     ReactiveFormsModule,
     InputIconModule,
     IconFieldModule,
-    IftaLabelModule
+    IftaLabelModule,
+    Toast
   ],
   providers: [MessageService],
   template: `
@@ -79,6 +80,7 @@ import { MessageService } from 'primeng/api';
         </div>
 
         <div class="form-actions">
+          <p-toast />
           <p-button label="Cancel" severity="secondary" (click)="cancelForm()"></p-button>
           <p-button label="Save" type="submit"></p-button>
         </div>
