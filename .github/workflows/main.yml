@@ -1,35 +1,38 @@
+# .github/workflows/ci.yml
 name: CI
+
 on:
   push:
     branches:
-      # Change this if your primary branch is not main
       - main
   pull_request:
 
-# Needed for nx-set-shas when run on the main branch
-permissions:
-  actions: read
-  contents: read
-
 jobs:
-  main:
+  ci:
+    name: Build and Test
     runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-          filter: tree:0
 
-      - uses: actions/setup-node@v3
+    steps:
+      - name: Checkout source code
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: 'npm'
-      # This line enables distribution
-      # The "--stop-agents-after" is optional, but allows idle agents to shut down once the "e2e-ci" targets have been requested
-      # - run: npx nx-cloud start-ci-run --distribute-on="3 linux-medium-js" --stop-agents-after="e2e-ci"
-      - run: pnpm ci
+          cache: 'pnpm'
 
-      - uses: nrwl/nx-set-shas@v4
+      - name: Install PNPM
+        run: npm install -g pnpm
 
-      - run: npx nx-cloud record -- nx format:check
-      - run: npx nx affected -t lint test build e2e-ci
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Set SHAs for Nx Cloud
+        uses: nrwl/nx-set-shas@v3
+
+      - name: Run Nx commands
+        run: pnpm exec nx affected -t build,test --parallel=3 --configuration=ci
+
+      - name: Upload Nx Cloud Results
+        run: pnpm exec nx-cloud upload --verbose
