@@ -1,15 +1,17 @@
 # .github/workflows/ci.yml
-name: CI
+name: Nx Cloud CI
 
 on:
   push:
     branches:
       - main
   pull_request:
+    branches:
+      - main
 
 jobs:
   ci:
-    name: Build and Test
+    name: Build and Test Affected
     runs-on: ubuntu-latest
 
     steps:
@@ -31,8 +33,17 @@ jobs:
       - name: Set SHAs for Nx Cloud
         uses: nrwl/nx-set-shas@v3
 
-      - name: Run Nx commands
+      - name: Check for affected projects
+        id: affected
+        run: |
+          AFFECTED_APPS=$(pnpm exec nx show projects --affected --type=app)
+          echo "Affected apps: $AFFECTED_APPS"
+          echo "affected=$AFFECTED_APPS" >> $GITHUB_ENV
+
+      - name: Build and test if affected
+        if: env.affected != ''
         run: pnpm exec nx affected -t build,test --parallel=3 --configuration=ci
 
       - name: Upload Nx Cloud Results
+        if: env.affected != ''
         run: pnpm exec nx-cloud upload --verbose
