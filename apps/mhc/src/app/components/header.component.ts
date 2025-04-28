@@ -69,7 +69,7 @@ import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
   <div class="mx-auto max-w-xl sm:max-w-xl shrink-0 lg:mx-0 lg:pt-8">
     <!-- Title and Description -->
     <h1 class="mt-10 text-3xl font-semibold tracking-tight text-white sm:text-2xl font-peridot">
-      Hardscapes for your home. Excavation and Plowing for your business.
+      Hardscapes for your home. Excavation and Plowing for your business all year round.
     </h1>
     <p class="mt-8 text-md font-medium text-gray-400 sm:text-sm">
       Whether you want to create the perfect outdoor space to entertain, or you need rugged professionals to move earth and snow for your business.
@@ -159,7 +159,7 @@ export class HeaderComponent implements OnInit {
       email: new FormControl(''),
       phone: new FormControl(''),
       description: new FormControl(''),
-    }); 
+    });
   }
   // Show the modal
   showForm() {
