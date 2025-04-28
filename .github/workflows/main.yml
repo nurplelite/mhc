@@ -8,6 +8,7 @@ on:
   pull_request:
     branches:
       - main
+  workflow_dispatch:
 
 jobs:
   ci:
@@ -25,7 +26,9 @@ jobs:
           cache: 'pnpm'
 
       - name: Install PNPM
-        run: npm install -g pnpm
+        run: |
+          npm install -g pnpm
+          pnpm --version
 
       - name: Install dependencies
         run: pnpm install
