@@ -1,13 +1,23 @@
 import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { NxWelcomeComponent } from './nx-welcome.component';
+import { HeaderComponent } from "./components/header.component";
+import { FooterComponent } from './components/footer.component';
+import { CardsComponent } from './components/cards.component';
+
 
 @Component({
-  imports: [NxWelcomeComponent, RouterModule],
+  imports: [FooterComponent, RouterModule, HeaderComponent, CardsComponent],
   selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.scss',
+  template: `
+    <div class="max-w-auto-xl mx-auto px-4">
+      <app-header></app-header>
+      <app-cards></app-cards>
+      <app-footer></app-footer>
+    </div>
+  `,
+  standalone: true,
+  styles: ``
 })
 export class AppComponent {
-  title = 'mhc';
+  title = 'Dylan Jewett Property Services'
 }
