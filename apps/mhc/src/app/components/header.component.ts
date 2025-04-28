@@ -42,46 +42,47 @@ import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
     <div class="background-clip"></div>
   </div>
 
-  <!-- Image Container -->
-  <div class="image-container">
-    <div class="image-wrapper">
-      <img
-        alt="DJPS Logo"
-        src="https://storage.cloud.google.com/mad-bear-cave/djps/img/logos/djps-logo-v1.png"
-        class="logo-image"
-      />
-    </div>
-  </div>
+    <!-- Main Content -->
+    <div class="content-container">
+      <div class="content-inner">
+        <h1 class="content-title">
+          Hardscapes for your home. Excavation and Plowing for your business all year round.
+        </h1>
+        <p class="content-description">
+          Whether you want to create the perfect outdoor space to entertain, or you need rugged professionals to move earth and snow for your business.
+        </p>
 
-  <!-- Main Content -->
-  <div class="content-container">
-    <div class="content-inner">
-      <h1 class="content-title">
-        Hardscapes for your home. Excavation and Plowing for your business all year round.
-      </h1>
-      <p class="content-description">
-        Whether you want to create the perfect outdoor space to entertain, or you need rugged professionals to move earth and snow for your business.
-      </p>
+        <!-- Action Buttons -->
+        <div class="action-buttons">
+          <p-button
+            label="Get a Quote"
+            [rounded]="true"
+            severity="success"
+            (click)="showForm()"
+          ></p-button>
 
-      <!-- Action Buttons -->
-      <div class="action-buttons">
-        <p-button
-          label="Get a Quote"
-          styleClass="p-button-outlined"
-          (click)="showForm()"
-        ></p-button>
+          <!-- <a href="#services" class="link-button">
+            Services <span aria-hidden="true">→</span>
+          </a>
 
-        <a href="#services" class="link-button">
-          Services <span aria-hidden="true">→</span>
-        </a>
-
-        <a href="#testimonials" class="link-button">
-          Hear What People Are Saying <span aria-hidden="true">→</span>
-        </a>
+          <a href="#testimonials" class="link-button">
+            Hear What People Are Saying <span aria-hidden="true">→</span>
+          </a> -->
+        </div>
+      </div>
+          <!-- Image Container -->
+    <div class="image-container">
+      <div class="image-wrapper">
+        <img
+          alt="DJPS Logo"
+          src="https://storage.cloud.google.com/mad-bear-cave/djps/img/logos/djps-logo-v1.png"
+          class="logo-image"
+        />
       </div>
     </div>
-  </div>
-</div>
+    </div>
+
+</div>>
 
 <!-- Dialog -->
 <div class="contact-dialog">
@@ -122,100 +123,18 @@ import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
         </div>
       </div>
 
-<<<<<<< Updated upstream
-<!-- Image Container (Positioned Above Content, Overlapping) -->
-<div class="mx-auto z-20 mt-16 sm:mt-10 lg:mt-0 flex max-w-2xl sm:max-w-full lg:max-w-none sm:mb-0 relative overflow-visible">
-  <!-- Image -->
-  <div class="absolute top-0 right-0 transform sm:w-20 sm:h-20 sm:scale-100 sm:translate-x-20 sm:translate-y-5 lg:w-auto lg:h-auto lg:scale-100 lg:translate-x-0 lg:translate-y-40">
-    <img
-      alt="DJPS Logo"
-      src="https://storage.cloud.google.com/mad-bear-cave/djps/img/logos/djps-logo-v1.png"
-      class="transition-all duration-500 ease-in-out"
-    />
-  </div>
-</div>
-
-<!-- Main Content -->
-<div class="mx-auto z-20 max-w-7xl px-6 pt-10 pb-24 sm:pb-32 lg:flex lg:px-8 lg:py-40 sm:flex-col-reverse lg:flex-row">
-  <div class="mx-auto max-w-xl sm:max-w-xl shrink-0 lg:mx-0 lg:pt-8">
-    <!-- Title and Description -->
-    <h1 class="mt-10 text-3xl font-semibold tracking-tight text-white sm:text-2xl font-peridot">
-      Hardscapes for your home. Excavation and Plowing for your business all year round.
-    </h1>
-    <p class="mt-8 text-md font-medium text-gray-400 sm:text-sm">
-      Whether you want to create the perfect outdoor space to entertain, or you need rugged professionals to move earth and snow for your business.
-    </p>
-
-    <!-- Buttons (Get a Quote, Services, Testimonials) -->
-    <div class="mt-10 flex items-center gap-x-6">
-      <!-- Get a Quote Button -->
-     <p-button
-        label="Get a Quote"
-        styleClass="p-button-outlined"
-        (click)="showForm()"
-      ></p-button>
-
-      <!-- Services Link -->
-      <a href="#services" class="text-sm font-semibold text-white no-underline">
-      Services <span aria-hidden="true">→</span>
-      </a>
-
-    <!-- Testimonials Link -->
-
-      <a href="#testimonials" class="text-sm font-semibold text-white no-underline">
-        Hear What People Are Saying <span aria-hidden="true">→</span>
-      </a>
-    </div>
-  </div>
-</div>
-<div class="card flex justify-center">
-<p-dialog header="Contact Form" [modal]="true" [(visible)]="this.visible" [style]="{ width: '20rem' }">
-  <!-- Wrap the inputs in a form element that is bound to the FormGroup -->
-  <form *ngIf="contactData" class="p-4 space-y-4" [formGroup]="contactData" (ngSubmit)="submitForm()">
-    <div class="space-y-4">
-      <!-- Name Field -->
-      <p-iftalabel>
-        <p-iconfield>
-          <p-inputicon class="pi pi-envelope" />
-          <input pInputText id="name" type="text" class="p-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500" formControlName="name">
-        </p-iconfield>
-        <label for="name" class="text-sm font-medium text-gray-700">Name</label>
-      </p-iftalabel>
-
-      <!-- Email Field -->
-      <p-iftalabel>
-        <p-iconfield>
-          <p-inputicon class="pi pi-mobile" />
-          <input pInputText id="email" type="email" class="p-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500" formControlName="email">
-        </p-iconfield>
-        <label for="name" class="text-sm font-medium text-gray-700">Email</label>
-      </p-iftalabel>
-
-      <!-- Phone Field -->
-      <p-iftalabel>
-        <p-iconfield>
-          <p-inputicon class="pi pi-user" />
-          <input pInputText id="phone" type="phone" class="p-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500" formControlName="phone">
-        </p-iconfield>
-        <label for="name" class="text-sm font-medium text-gray-700">Phone Number</label>
-      </p-iftalabel>
-
-      <!-- Project Description Field with Regular Label Above -->
-      <div class="flex flex-col">
-        <label for="description" class="text-sm">Please tell us how we can help</label>
-        <textarea id="description" formControlName="description" rows="5" class="p-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"></textarea>
-=======
       <div class="form-actions">
         <p-button label="Cancel" severity="secondary" (click)="cancelForm()" />
         <p-button label="Save" type="submit" />
->>>>>>> Stashed changes
       </div>
     </form>
   </p-dialog>
 </div>
 
   `,
-  styles: `.background-container {
+  styles: `
+
+  .background-container {
     position: relative;
     isolation: isolate;
     overflow: visible;
@@ -228,12 +147,12 @@ import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
     width: 100%;
     height: 100%;
     mask-image: radial-gradient(100% 100% at top right, white, transparent);
-    stroke: rgba(255, 255, 255, 0.1);
+    stroke: rgba(80, 250, 120, 0.2);
   }
 
   .pattern-overlay {
     overflow: visible;
-    fill: rgba(31, 41, 55, 0.2);
+    fill: rgba(80, 41, 55, 0.2);
   }
 
   .background-clip-container {
@@ -264,11 +183,16 @@ import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
     clip-path: polygon(73.6% 51.7%, 91.7% 11.8%, 100% 46.4%, 97.4% 82.2%, 92.5% 84.9%, 75.7% 64%, 55.3% 47.5%, 46.5% 49.4%, 45% 62.9%, 50.3% 87.2%, 21.3% 64.1%, 0.1% 100%, 5.4% 51.1%, 21.4% 63.9%, 58.9% 0.2%, 73.6% 51.7%);
   }
 
+  .hero-container {
+    display: flex;
+  }
+
   .image-container {
     margin: 0 auto;
     z-index: 20;
     display: flex;
     overflow: visible;
+
 
     @media (min-width: 640px) {
       max-width: 100%;
@@ -279,22 +203,18 @@ import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
   }
 
   .image-wrapper {
-    position: absolute;
-    top: 0;
-    right: 0;
-    transform: translate(0, 10rem);
+    margin-top: 2.5rem;
+    align-self: flex-end;
 
     @media (min-width: 640px) {
       width: 5rem;
       height: 5rem;
       scale: 1;
-      translate: (5rem, 1.25rem);
     }
     @media (min-width: 1024px) {
       width: auto;
       height: auto;
       scale: 1;
-      translate: (0, 10rem);
     }
   }
 
@@ -306,15 +226,16 @@ import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
     margin: 0 auto;
     z-index: 20;
     max-width: 80rem;
-    padding: 2.5rem 1.5rem 6rem;
+    display: flex;
+    flex-direction: column-reverse;
 
     @media (min-width: 640px) {
       padding-bottom: 8rem;
+     flex-direction: column
     }
     @media (min-width: 1024px) {
       display: flex;
       flex-direction: row;
-      padding: 10rem 2rem;
     }
     @media (min-width: 640px) and (max-width: 1024px) {
       flex-direction: column-reverse;
@@ -331,12 +252,18 @@ import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
       padding-top: 2rem;
     }
   }
+  .action-buttons {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+    justify-content: center;
+  }
 
   .content-title {
     margin-top: 2.5rem;
     font-size: 1.875rem;
     font-weight: 600;
-    tracking: tight;
+    line-height: 1.25;
     color: #ffffff;
     font-family: 'Peridot', sans-serif;
   }

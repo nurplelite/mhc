@@ -36,7 +36,7 @@ import { CommonModule } from '@angular/common';
   styles: `
     .footer {
       padding: 4rem 0;
-      background-color: #0f172a; /* Optional: Dark background for footer */
+
     }
 
     .footer-container {
