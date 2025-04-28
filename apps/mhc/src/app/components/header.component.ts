@@ -6,7 +6,11 @@ import { InputTextModule } from 'primeng/inputtext';
 import { InputIconModule } from 'primeng/inputicon';
 import { IconFieldModule } from 'primeng/iconfield';
 import { IftaLabelModule } from 'primeng/iftalabel';
-import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { ApiService } from '../services/api.service';
+import { BehaviorSubject } from 'rxjs';
+import { MessageService } from 'primeng/api';
+import { Toast } from 'primeng/toast';
 
 @Component({
   selector: 'app-header',
@@ -19,8 +23,10 @@ import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
     ReactiveFormsModule,
     InputIconModule,
     IconFieldModule,
-    IftaLabelModule
+    IftaLabelModule,
+    Toast
   ],
+  providers: [MessageService],
   template: `
   <!-- Content -->
   <div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 flex flex-col-reverse sm:flex-col lg:flex-row items-center">
@@ -74,6 +80,7 @@ import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
         </div>
 
         <div class="form-actions">
+          <p-toast />
           <p-button label="Cancel" severity="secondary" (click)="cancelForm()"></p-button>
           <p-button label="Save" type="submit"></p-button>
         </div>
@@ -178,14 +185,20 @@ import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 export class HeaderComponent implements OnInit {
   visible = false;
   contactData: FormGroup | undefined;
+  formDataSubject = new BehaviorSubject<FormGroup | undefined>(undefined);
+
+  constructor(private apiService: ApiService, private snackBar: MessageService) {}
 
   ngOnInit(): void {
+
     this.contactData = new FormGroup({
-      name: new FormControl(''),
-      email: new FormControl(''),
-      phone: new FormControl(''),
-      description: new FormControl(''),
+      name: new FormControl('', Validators.required),
+      email: new FormControl('', [Validators.required, Validators.email]),
+      phone: new FormControl('', Validators.required),
+      description: new FormControl('', Validators.required),
     });
+
+
   }
 
   showForm() {
@@ -209,10 +222,49 @@ export class HeaderComponent implements OnInit {
   }
 
   submitForm() {
-    const payload = { ...this.contactData?.value };
-    console.log('Form Payload:', payload);
+    if (this.contactData?.invalid) {
+      console.log('Form is invalid:', this.contactData?.errors);
+      this.message(false, 'Please fill in all required fields.');
+      return;
+    }
 
-    this.visible = false;
-    this.clearForm();
+    console.log('Form Payload:', this.contactData?.value);
+
+    this.apiService.sendContactForm(this.contactData?.value).subscribe({
+      next: (response) => {
+        console.log('Response from API:', response);
+        this.message(true, 'Form submitted successfully!');
+        this.clearForm();
+        this.visible = false;
+      },
+      error: (error: Error) => {
+        console.error('Error submitting form:', error);
+        this.message(false, error.message);
+      }
+    });
   }
-}
+
+    message(success: boolean, message: string ){
+      console.log('Message:', message);
+      if (success) {
+        this.snackBar.add({
+          severity: 'success',
+          summary: 'Success',
+          detail: message,
+          life: 3000
+        });
+      } else {
+        this.snackBar.add({
+          severity: 'error',
+          summary: 'Error',
+          detail: message,
+          life: 3000
+        });
+      }
+
+    }
+
+  }
+
+
+
