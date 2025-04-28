@@ -34,7 +34,7 @@ jobs:
         run: pnpm install
 
       - name: Set SHAs for Nx Cloud
-        uses: nrwl/nx-set-shas@v3
+        uses: nrwl/nx-set-shas@v4
 
       - name: Check for affected projects
         id: affected
@@ -50,3 +50,5 @@ jobs:
       - name: Upload Nx Cloud Results
         if: env.affected != ''
         run: pnpm exec nx-cloud upload --verbose
+      - run: npx nx-cloud record -- nx format:check
+      - run: npx nx affected -t lint test build e2e-ci
