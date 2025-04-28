@@ -9,7 +9,11 @@ module.exports = {
     ...createGlobPatternsForDependencies(__dirname),
   ],
   theme: {
-    extend: {},
+    extend: {
+      blur: {
+        '4xl': '200px', // custom named blur
+    },
   },
   plugins: [PrimeUI],
-};
+  }
+}

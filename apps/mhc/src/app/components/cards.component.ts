@@ -101,15 +101,15 @@ import { CardModule } from 'primeng/card';
     }
 
     .bg-hardscape {
-      background-image: url('https://storage.cloud.google.com/mad-bear-cave/djps/cards/walk-way-card-2.png');
+      background-image: url('https://storage.googleapis.com/mhc-assets/djps/walk-way-card-2.png');
     }
 
     .bg-excavating {
-      background-image: url('https://storage.cloud.google.com/mad-bear-cave/djps/cards/soil-sun.png');
+      background-image: url('https://storage.googleapis.com/mhc-assets/djps/soil-sun.png');
     }
 
     .bg-plowing {
-      background-image: url('https://storage.cloud.google.com/mad-bear-cave/djps/cards/truck%20card.png');
+      background-image: url('https://storage.googleapis.com/mhc-assets/djps/truck%20card.png');
     }
 
     .card-description {
