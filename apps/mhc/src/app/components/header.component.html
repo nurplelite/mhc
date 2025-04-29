@@ -1,0 +1,24 @@
+<div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 flex flex-col-reverse sm:flex-col lg:flex-row items-center">
+  <div class="max-w-2xl text-center lg:text-left">
+    <h1 class="text-3xl font-extrabold tracking-tight text-white sm:text-5xl">
+      Hardscapes for your home. Excavation and Plowing for your business.
+    </h1>
+    <h2 class="mt-6 text-2xl leading-8 text-white">
+      All. Year. Round.
+    </h2>
+    <p class="mt-6 text-lg leading-8 text-gray-300">
+      Whether you want to create the perfect outdoor space to entertain, or you need rugged professionals to move earth and snow for your business.
+    </p>
+    <div class="mt-10 flex items-center justify-center gap-x-6 lg:justify-start">
+      <p-button label="Get a Quote" [rounded]="true" severity="success" (click)="openForm()"></p-button>
+    </div>
+  </div>
+
+  <div class="contact-dialog">
+    <app-contact-form [(visible)]="formVisible"></app-contact-form>
+  </div>
+
+  <div class="image-container flex items-end justify-end w-1/2">
+    <img src="https://storage.googleapis.com/mhc-assets/djps/djps-v2.png" alt="DJPS Logo" class="image-wrapper" />
+  </div>
+</div>
