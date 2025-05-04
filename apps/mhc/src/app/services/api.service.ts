@@ -5,13 +5,14 @@ import { FormGroup } from '@angular/forms';
 
 @Injectable({providedIn: 'root'})
 export class ApiService {
-  private apiUrl = 'https://35.238.189.228/api/contact' // Replace with your API URL
+  private collectionName = 'contacts';
+  private apiUrl = 'http://localhost:3000/api' // Replace with your API URL
 
   constructor(private http: HttpClient) {}
 
   sendContactForm(data: FormGroup): Observable<object> {
     console.log('Sending data to API:', data.value);
-    return this.http.post(this.apiUrl, data);
+    return this.http.post(`${this.apiUrl}/firestore/${this.collectionName}`,data.value)
 
     }
   }

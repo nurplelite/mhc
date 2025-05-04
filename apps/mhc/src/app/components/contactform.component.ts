@@ -59,7 +59,7 @@ export class ContactFormComponent {
       return;
     }
 
-    this.apiService.sendContactForm(this.contactForm.value).subscribe({
+    this.apiService.sendContactForm(this.contactForm).subscribe({
       next: () => {
         this.toast.add({ severity: 'success', summary: 'Success', detail: 'Form submitted!', life: 3000 });
         this.contactForm.reset();
