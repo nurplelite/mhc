@@ -28,13 +28,13 @@ jobs:
         run: pnpm install
 
       - name: Lint all apps
-        run: pnpm nx lint site-a site-b
+        run: pnpm nx lint mhc
 
       - name: Test all apps
-        run: pnpm nx test site-a site-b
+        run: pnpm nx test mhc
 
       - name: Build all apps
-        run: pnpm nx run-many --target=build --projects=site-a,site-b --configuration=production
+        run: pnpm nx run-many --target=build --projects=mhc --configuration=production
 
 
   prod-deploy:
