@@ -68,4 +68,4 @@ jobs:
         run: |
           echo "${{ secrets.GCE_SSH_PRIVATE_KEY }}" > key.pem
           chmod 600 key.pem
-          scp -i key.pem -o StrictHostKeyChecking=no -r dist/apps/mhc/browser/* ${{ secrets.GCE_VM_USER }}@${{ secrets.GCE_VM_IP }}:/var/www/djps/
+          scp -i key.pem -o StrictHostKeyChecking=no -r dist/apps/mhc/browser/* ${{ secrets.GCE_VM_USER }}@${{ secrets.GCE_VM_IP }}:/var/www/html/djps/
