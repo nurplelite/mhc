@@ -1,43 +1,67 @@
-name: Nx Cloud CI
+name: CI/CD for mhc sites
 
 on:
   push:
-    branches:
-      - main
+    branches: [main]
   pull_request:
-    branches:
-      - main
-  workflow_dispatch:
+    branches: ['**']
 
 jobs:
-  ci:
-    name: Build and Test Affected
-    runs-on: ubuntu-22.04
-    strategy:
-      matrix:
-        node-version: [20]
+  dev-pr-check:
+    name: PR Build & Lint (Dev)
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    environment: development
 
     steps:
-      - name: Checkout source code
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
 
       - name: Install PNPM
-        uses: pnpm/action-setup@v4
-
-      - name: Set up Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: ${{ matrix.node-version }}
-          cache: 'pnpm'
+        run: npm install -g pnpm
 
       - name: Install dependencies
         run: pnpm install
 
-      - name: Enable Corepack (optional but good)
-        run: corepack enable
+      - name: Lint all apps
+        run: pnpm nx lint site-a site-b
 
-      - name: Set SHAs for Nx Cloud
-        uses: nrwl/nx-set-shas@v3
+      - name: Test all apps
+        run: pnpm nx test site-a site-b
 
-      - name: Run format check, lint, test, build and record to Nx Cloud
-        run: npx nx-cloud record -- npx nx format:check && npx nx affected -t lint test build e2e-ci
+      - name: Build all apps
+        run: pnpm nx run-many --target=build --projects=site-a,site-b --configuration=production
+
+
+  prod-deploy:
+    name: Deploy Angular Sites
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    environment: production
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Install PNPM
+        run: npm install -g pnpm
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Build sites
+        run: pnpm nx run-many --target=build --projects=mhc --configuration=production
+
+      - name: Deploy djps to VM
+        run: |
+          echo "${{ secrets.GCE_SSH_PRIVATE_KEY }}" > key.pem
+          chmod 600 key.pem
+          scp -i key.pem -o StrictHostKeyChecking=no -r dist/apps/mhc/browser/* ${{ secrets.GCE_VM_USER }}@${{ secrets.GCE_VM_IP }}:/var/www/djps/
