@@ -12,7 +12,7 @@ export class ApiService {
 
   sendContactForm(data: FormGroup): Observable<object> {
     console.log('Sending data to API:', data.value);
-    return this.http.post(`${this.apiUrl}/firestore/${this.collectionName}`,data.value)
+    return this.http.post(`${this.apiUrl}/contact/form/submit/${this.collectionName}`,data.value)
 
     }
   }
