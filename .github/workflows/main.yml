@@ -26,17 +26,24 @@ jobs:
       - name: Install PNPM
         run: npm install -g pnpm
 
+      - uses: actions/cache@v3
+        with:
+          path: ~/.pnpm-store
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+
       - name: Install dependencies
         run: pnpm install
 
       - name: Lint all apps
-        run: pnpm nx lint mhc
+        run: pnpm nx lint mhc madhare
 
       - name: Test all apps
-        run: pnpm nx test mhc
+        run: pnpm nx test mhc madhare
 
       - name: Build all apps
-        run: pnpm nx run-many --target=build --projects=mhc --configuration=production
+        run: pnpm nx run-many --target=build --projects=mhc,madhare --configuration=production
 
 
   prod-deploy:
@@ -58,14 +65,23 @@ jobs:
       - name: Install PNPM
         run: npm install -g pnpm
 
+      - uses: actions/cache@v3
+        with:
+          path: ~/.pnpm-store
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+
       - name: Install dependencies
         run: pnpm install
 
       - name: Build sites
-        run: pnpm nx run-many --target=build --projects=mhc --configuration=production
+        run: pnpm nx run-many --target=build --projects=mhc,madhare --configuration=production
 
-      - name: Deploy djps to VM
+      - name: Deploy sites to VM
         run: |
           echo "${{ secrets.GCE_SSH_PRIVATE_KEY }}" > key.pem
           chmod 600 key.pem
+          trap 'rm -f key.pem' EXIT
           scp -i key.pem -o StrictHostKeyChecking=no -r dist/apps/mhc/browser/* ${{ secrets.GCE_VM_USER }}@${{ secrets.GCE_VM_IP }}:/var/www/html/djps/
+          scp -i key.pem -o StrictHostKeyChecking=no -r dist/apps/madhare/browser/* ${{ secrets.GCE_VM_USER }}@${{ secrets.GCE_VM_IP }}:/var/www/html/madhare/
