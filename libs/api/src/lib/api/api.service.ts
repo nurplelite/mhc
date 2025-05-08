@@ -19,7 +19,7 @@ export class ApiService {
     }
 
     const { token } = await firstValueFrom(
-      this.http.post<{ token: string }>('/api/session/start', { siteId })
+      this.http.post<{ token: string }>(`/session/start/${ siteId }`, {})
     );
     this.token$.set(token);
     localStorage.setItem(this.STORAGE_KEY, token);

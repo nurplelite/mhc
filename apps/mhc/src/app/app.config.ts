@@ -21,7 +21,7 @@ export const appConfig: ApplicationConfig = {
     provideHttpClient(withFetch(), withInterceptors([sessionInterceptor])),
     provideAppInitializer(() => {
       const api = inject(ApiService);
-      return api.init('djps'); // ✅ directly return the promise
+      return api.init('iLZN2t9djSHRDFhW3v3Q'); // ✅ directly return the promise
     }),
     provideAnimationsAsync(),
     providePrimeNG({
