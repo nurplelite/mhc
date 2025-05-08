@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Dialog } from 'primeng/dialog';
 import { ButtonModule } from 'primeng/button';
@@ -7,7 +7,7 @@ import { InputIconModule } from 'primeng/inputicon';
 import { IconFieldModule } from 'primeng/iconfield';
 import { IftaLabelModule } from 'primeng/iftalabel';
 import { FormGroup, FormControl, Validators, ReactiveFormsModule } from '@angular/forms';
-import { ApiService } from '../services/api.service';
+import { ApiService } from '@mhc/api';
 import { MessageService } from 'primeng/api';
 import { Toast } from 'primeng/toast';
 
@@ -34,6 +34,8 @@ export class ContactFormComponent {
   @Input() visible = false;
   @Output() visibleChange = new EventEmitter<boolean>();
 
+  private ApiService = inject(ApiService);
+
   contactForm: FormGroup;
 
   constructor(private apiService: ApiService, private toast: MessageService) {
@@ -59,7 +61,7 @@ export class ContactFormComponent {
       return;
     }
 
-    this.apiService.sendContactForm(this.contactForm).subscribe({
+    this.apiService.sendForm(this.contactForm).subscribe({
       next: () => {
         this.toast.add({ severity: 'success', summary: 'Success', detail: 'Form submitted!', life: 3000 });
         this.contactForm.reset();

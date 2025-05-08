@@ -6,6 +6,7 @@ import { CardsComponent } from './components/cards.component';
 
 
 
+
 @Component({
   imports: [FooterComponent, RouterModule, HeaderComponent, CardsComponent],
   selector: 'app-root',
@@ -45,4 +46,5 @@ import { CardsComponent } from './components/cards.component';
 })
 export class AppComponent {
   title = 'Dylan Jewett Property Services'
+
 }
