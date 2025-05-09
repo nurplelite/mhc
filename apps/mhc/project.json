@@ -68,6 +68,36 @@
       "defaultConfiguration": "development",
       "continuous": true
     },
+    "serve-ssr": {
+      "executor": "@nx/node:node",
+      "options": {
+        "buildTarget": "mhc:server",
+        "watch": true,
+        "outputPath": "dist/apps/mhc/server",
+        "main": "dist/apps/mhc/server/main.js"
+      }
+    },
+    "server": {
+      "executor": "@angular-devkit/build-angular:server",
+      "options": {
+        "outputPath": "dist/apps/mhc/server",
+        "main": "apps/mhc/src/main.server.ts",
+        "tsConfig": "apps/mhc/tsconfig.server.json"
+      },
+      "configurations": {
+        "production": {
+          "optimization": true,
+          "sourceMap": false,
+          "extractLicenses": true,
+          "outputHashing": "media"
+        },
+        "development": {
+          "optimization": false,
+          "sourceMap": true
+        }
+      },
+      "defaultConfiguration": "production"
+    },
     "extract-i18n": {
       "executor": "@angular-devkit/build-angular:extract-i18n",
       "options": {
