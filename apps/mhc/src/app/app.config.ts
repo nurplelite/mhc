@@ -18,7 +18,7 @@ export const appConfig: ApplicationConfig = {
     provideClientHydration(withEventReplay()),
     provideZoneChangeDetection({ eventCoalescing: true }),
     provideRouter(appRoutes),
-    provideHttpClient(withFetch(), withInterceptors([sessionInterceptor])),
+    provideHttpClient(withFetch()),
     provideAppInitializer(() => {
       const api = inject(ApiService);
       return api.init('djps', 'djps'); // ✅ directly return the promise

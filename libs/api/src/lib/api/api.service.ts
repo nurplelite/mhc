@@ -1,6 +1,7 @@
 import { Injectable, signal } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { firstValueFrom, Observable } from 'rxjs';
+import { tap } from 'rxjs/operators';
 
 @Injectable({ providedIn: 'root' })
 export class ApiService {
@@ -42,7 +43,8 @@ export class ApiService {
 
   submitForm(data: any): Observable<object> {
     console.log('Sending data to API:',this.apiUrl, this.accountId, data);
-    return this.http.post(`${this.apiUrl}/form/submit/${this.accountId}`, data)
+    return this.http.post(`${this.apiUrl}/form/submit/${this.accountId}`, data).pipe(
+      tap(() => console.log('📡 HTTP request fired!')))
 
     }
 }
