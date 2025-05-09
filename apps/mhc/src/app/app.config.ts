@@ -5,24 +5,21 @@ import {
   provideClientHydration,
   withEventReplay,
 } from '@angular/platform-browser';
-import { provideHttpClient, withFetch, withInterceptors } from '@angular/common/http';
+import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { providePrimeNG } from 'primeng/config';
 import Aura from '@primeng/themes/aura';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { FilterMatchMode } from 'primeng/api';
 import { sessionInterceptor } from '@mhc/api';
-import { ApiService } from '@mhc/api';
 
 export const appConfig: ApplicationConfig = {
   providers: [
     provideClientHydration(withEventReplay()),
     provideZoneChangeDetection({ eventCoalescing: true }),
     provideRouter(appRoutes),
-    provideHttpClient(withFetch()),
-    provideAppInitializer(() => {
-      const api = inject(ApiService);
-      return api.init('djps', 'djps'); // ✅ directly return the promise
-    }),
+    provideHttpClient(
+      //withInterceptors([sessionInterceptor])
+    ),
     provideAnimationsAsync(),
     providePrimeNG({
       theme: {

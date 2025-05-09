@@ -28,7 +28,8 @@
         "ssr": {
           "entry": "apps/mhc/src/server.ts"
         },
-        "outputMode": "server"
+        "outputMode": "server",
+        "prerender": true
       },
       "configurations": {
         "production": {
