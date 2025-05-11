@@ -6,7 +6,7 @@ import { firstValueFrom, Observable } from 'rxjs'
 @Injectable({ providedIn: 'root' })
 export class ApiService {
   private token$ = signal<string | null>(null)
-  private readonly STORAGE_KEY = 'sessionToken'
+  private readonly STORAGE_KEY = 'session'
   private apiUrl = 'http://localhost:3000'// Local API URL
   // private apiUrl = 'https://api.madhareconsulting.com' // Production API URL
   private accountId = 'djps'
@@ -29,7 +29,7 @@ export class ApiService {
     }
     try{
     const { token } = await firstValueFrom(
-      this.http.post<{ token: string }>(`${this.apiUrl}/session/start/${siteId}`, {})
+      this.http.post<{ token: string }>(`${this.apiUrl}/session/start/${siteId}`, {withCredentials: true})
     );
     this.token$.set(token)
     console.log('New token:', token)
@@ -46,6 +46,6 @@ export class ApiService {
   }
 
   submitForm(data: any): Observable<object> {
-    return this.http.post(`${this.apiUrl}/form/submit/${this.accountId}`, data)
+    return this.http.post(`${this.apiUrl}/form/submit/${this.accountId}`, data, {withCredentials: true})
   }
 }
