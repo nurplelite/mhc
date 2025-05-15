@@ -7,8 +7,8 @@ import { firstValueFrom, Observable } from 'rxjs'
 export class ApiService {
   private token$ = signal<string | null>(null)
   private readonly STORAGE_KEY = 'session'
-  private apiUrl = 'http://localhost:3000'// Local API URL
-  // private apiUrl = 'https://api.madhareconsulting.com' // Production API URL
+  //private apiUrl = 'http://localhost:3000'// Local API URL
+  private apiUrl = 'https://api.madhareconsulting.com' // Production API URL
   private accountId = 'djps'
 
   constructor(private http: HttpClient) {}
