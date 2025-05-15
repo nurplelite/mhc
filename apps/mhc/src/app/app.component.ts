@@ -1,8 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, inject, PLATFORM_ID } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { HeaderComponent } from "./components/header.component";
 import { FooterComponent } from './components/footer.component';
 import { CardsComponent } from './components/cards.component';
+import { ApiService } from '@mhc/api';
+
 
 
 
@@ -43,6 +46,17 @@ import { CardsComponent } from './components/cards.component';
     }
   `
 })
-export class AppComponent {
-  title = 'Dylan Jewett Property Services'
+export class AppComponent implements OnInit {
+  private platformId = inject(PLATFORM_ID)
+
+  constructor(private api: ApiService) {}
+
+  ngOnInit(): void {
+    console.log('🚨 Browser init firing in AppComponent')
+    if (isPlatformBrowser(this.platformId)) {
+      this.api.init('djps', 'djps')
+    }
+  }
 }
+
+

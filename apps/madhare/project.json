@@ -2,17 +2,17 @@
   "name": "madhare",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "application",
-  "prefix": "app",
+  "prefix": "mhc",
   "sourceRoot": "apps/madhare/src",
   "tags": [],
   "targets": {
     "build": {
-      "executor": "@angular-devkit/build-angular:application",
+      "executor": "@angular-devkit/build-angular:browser",
       "outputs": ["{options.outputPath}"],
       "options": {
-        "outputPath": "dist/apps/madhare",
+        "outputPath": "dist/apps/madhare/browser",
         "index": "apps/madhare/src/index.html",
-        "browser": "apps/madhare/src/main.ts",
+        "main": "apps/madhare/src/main.ts",
         "polyfills": ["zone.js"],
         "tsConfig": "apps/madhare/tsconfig.app.json",
         "inlineStyleLanguage": "scss",
@@ -23,12 +23,7 @@
           }
         ],
         "styles": ["apps/madhare/src/styles.scss"],
-        "scripts": [],
-        "server": "apps/madhare/src/main.server.ts",
-        "ssr": {
-          "entry": "apps/madhare/src/server.ts"
-        },
-        "prerender": true
+        "scripts": []
       },
       "configurations": {
         "production": {
@@ -47,14 +42,18 @@
           "outputHashing": "all"
         },
         "development": {
+          "buildOptimizer": false,
           "optimization": false,
+          "vendorChunk": true,
           "extractLicenses": false,
-          "sourceMap": true
+          "sourceMap": true,
+          "namedChunks": true
         }
       },
       "defaultConfiguration": "production"
     },
     "serve": {
+      "continuous": true,
       "executor": "@angular-devkit/build-angular:dev-server",
       "configurations": {
         "production": {
@@ -76,12 +75,67 @@
       "executor": "@nx/eslint:lint"
     },
     "serve-static": {
+      "continuous": true,
       "executor": "@nx/web:file-server",
       "options": {
         "buildTarget": "madhare:build",
-        "staticFilePath": "dist/apps/madhare/browser",
         "spa": true
       }
+    },
+    "server": {
+      "dependsOn": ["build"],
+      "executor": "@angular-devkit/build-angular:server",
+      "options": {
+        "outputPath": "dist/apps/madhare/server",
+        "main": "apps/madhare/src/server.ts",
+        "tsConfig": "apps/madhare/tsconfig.server.json",
+        "inlineStyleLanguage": "scss"
+      },
+      "configurations": {
+        "production": {
+          "outputHashing": "media"
+        },
+        "development": {
+          "buildOptimizer": false,
+          "optimization": false,
+          "sourceMap": true,
+          "extractLicenses": false,
+          "vendorChunk": true
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "serve-ssr": {
+      "continuous": true,
+      "executor": "@angular-devkit/build-angular:ssr-dev-server",
+      "configurations": {
+        "development": {
+          "browserTarget": "madhare:build:development",
+          "serverTarget": "madhare:server:development"
+        },
+        "production": {
+          "browserTarget": "madhare:build:production",
+          "serverTarget": "madhare:server:production"
+        }
+      },
+      "defaultConfiguration": "development"
+    },
+    "prerender": {
+      "executor": "@angular-devkit/build-angular:prerender",
+      "options": {
+        "routes": ["/"]
+      },
+      "configurations": {
+        "development": {
+          "browserTarget": "madhare:build:development",
+          "serverTarget": "madhare:server:development"
+        },
+        "production": {
+          "browserTarget": "madhare:build:production",
+          "serverTarget": "madhare:server:production"
+        }
+      },
+      "defaultConfiguration": "production"
     }
   }
 }

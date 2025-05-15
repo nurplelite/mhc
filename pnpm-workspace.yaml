@@ -1,3 +1,11 @@
 packages:
   - apps/**
   - libs/**
+
+onlyBuiltDependencies:
+  - '@parcel/watcher'
+  - '@swc/core'
+  - esbuild
+  - lmdb
+  - msgpackr-extract
+  - nx
