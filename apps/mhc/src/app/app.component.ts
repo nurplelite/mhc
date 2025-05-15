@@ -48,8 +48,11 @@ import { ApiService } from '@mhc/api';
 })
 export class AppComponent implements OnInit {
   private platformId = inject(PLATFORM_ID)
+  //private api = inject(ApiService)
 
-  constructor(private api: ApiService) {}
+  constructor(private api: ApiService) {
+    console.log('contsructor firing in AppComponent')
+  }
 
   ngOnInit(): void {
     console.log('🚨 Browser init firing in AppComponent')
