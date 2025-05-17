@@ -1,15 +1,12 @@
 import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { MatGridListModule } from '@angular/material/grid-list';
-import { MatButton } from '@angular/material/button';
-
-
+import { NxWelcomeComponent } from './nx-welcome.component';
 
 @Component({
-  imports: [ RouterModule, MatGridListModule, MatButton ],
-  selector: 'app-root',
+  imports: [NxWelcomeComponent, RouterModule],
+  selector: 'mad-root',
   templateUrl: './app.component.html',
-  styleUrl: './app.component.scss',
+  styleUrl: './app.component.sass',
 })
 export class AppComponent {
   title = 'madhare';

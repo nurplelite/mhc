@@ -2,7 +2,7 @@
   "name": "madhare",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "application",
-  "prefix": "app",
+  "prefix": "mad",
   "sourceRoot": "apps/madhare/src",
   "tags": [],
   "targets": {
@@ -15,17 +15,14 @@
         "browser": "apps/madhare/src/main.ts",
         "polyfills": ["zone.js"],
         "tsConfig": "apps/madhare/tsconfig.app.json",
-        "inlineStyleLanguage": "scss",
+        "inlineStyleLanguage": "sass",
         "assets": [
           {
             "glob": "**/*",
             "input": "apps/madhare/public"
           }
         ],
-        "styles": [
-          "apps/madhare/src/themes/mhc-theme.scss",
-          "apps/madhare/src/styles.scss"
-        ],
+        "styles": ["apps/madhare/src/styles.sass"],
         "scripts": [],
         "server": "apps/madhare/src/main.server.ts",
         "ssr": {
@@ -79,19 +76,11 @@
     "lint": {
       "executor": "@nx/eslint:lint"
     },
-    "test": {
-      "executor": "@nx/jest:jest",
-      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
-      "options": {
-        "jestConfig": "apps/madhare/jest.config.ts"
-      }
-    },
     "serve-static": {
       "continuous": true,
       "executor": "@nx/web:file-server",
       "options": {
         "buildTarget": "madhare:build",
-        "port": 4200,
         "staticFilePath": "dist/apps/madhare/browser",
         "spa": true
       }
