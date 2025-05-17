@@ -202,31 +202,3 @@ $tertiary-palette: map.merge(map.get($palettes, tertiary), $rest);
     surface-variant: _high-contrast-value(#e3e2e1, #464746, $theme-type),
     on-surface-variant: _high-contrast-value(#000000, #ffffff, $theme-type),
   ))
-}
-
-@mixin define-css-vars($theme-type: color-scheme)
-  :root
-    --md-sys-color-primary: _high-contrast-value(#002e51, #e8f0ff, $theme-type)
-    --md-sys-color-on-primary: _high-contrast-value(#ffffff, #000000, $theme-type)
-    --md-sys-color-primary-container: _high-contrast-value(#004b81, #96c6ff, $theme-type)
-    --md-sys-color-on-primary-container: _high-contrast-value(#ffffff, #000c1b, $theme-type)
-    --md-sys-color-secondary: _high-contrast-value(#4d1f00, #ffece4, $theme-type)
-    --md-sys-color-on-secondary: _high-contrast-value(#ffffff, #000000, $theme-type)
-    --md-sys-color-secondary-container: _high-contrast-value(#7a3500, #ffb185, $theme-type)
-    --md-sys-color-on-secondary-container: _high-contrast-value(#ffffff, #190600, $theme-type)
-    --md-sys-color-tertiary: _high-contrast-value(#1b285e, #efefff, $theme-type)
-    --md-sys-color-on-tertiary: _high-contrast-value(#ffffff, #000000, $theme-type)
-    --md-sys-color-tertiary-container: _high-contrast-value(#3a457d, #b4bfff, $theme-type)
-    --md-sys-color-on-tertiary-container: _high-contrast-value(#ffffff, #00062f, $theme-type)
-    --md-sys-color-background: _high-contrast-value(#f8f9ff, #0f141b, $theme-type)
-    --md-sys-color-on-background: _high-contrast-value(#171c23, #dee2ed, $theme-type)
-    --md-sys-color-surface: _high-contrast-value(#f8f9ff, #0f141b, $theme-type)
-    --md-sys-color-on-surface: _high-contrast-value(#000000, #ffffff, $theme-type)
-    --md-sys-color-surface-variant: _high-contrast-value(#e3e2e1, #464746, $theme-type)
-    --md-sys-color-on-surface-variant: _high-contrast-value(#000000, #ffffff, $theme-type)
-    --md-sys-color-outline: _high-contrast-value(#2b2c2c, #f1f0ef, $theme-type)
-    --md-sys-color-inverse-surface: _high-contrast-value(#2c3139, #dee2ed, $theme-type)
-    --md-sys-color-inverse-on-surface: _high-contrast-value(#ffffff, #000000, $theme-type)
-    --md-ref-palette-primary40: map.get($palettes, primary, 40)
-    --md-ref-palette-primary90: map.get($palettes, primary, 90)
-
