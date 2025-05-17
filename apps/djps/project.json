@@ -1,32 +1,32 @@
 {
-  "name": "mhc",
+  "name": "djps",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "application",
   "prefix": "app",
-  "sourceRoot": "apps/mhc/src",
+  "sourceRoot": "apps/djps/src",
   "tags": [],
   "targets": {
     "build": {
       "executor": "@angular-devkit/build-angular:application",
       "outputs": ["{options.outputPath}"],
       "options": {
-        "outputPath": "dist/apps/mhc",
-        "index": "apps/mhc/src/index.html",
-        "browser": "apps/mhc/src/main.ts",
+        "outputPath": "dist/apps/djps",
+        "index": "apps/djps/src/index.html",
+        "browser": "apps/djps/src/main.ts",
         "polyfills": ["zone.js"],
-        "tsConfig": "apps/mhc/tsconfig.app.json",
+        "tsConfig": "apps/djps/tsconfig.app.json",
         "inlineStyleLanguage": "scss",
         "assets": [
           {
             "glob": "**/*",
-            "input": "apps/mhc/public"
+            "input": "apps/djps/public"
           }
         ],
-        "styles": ["apps/mhc/src/styles.scss"],
+        "styles": ["apps/djps/src/styles.scss"],
         "scripts": [],
-        "server": "apps/mhc/src/main.server.ts",
+        "server": "apps/djps/src/main.server.ts",
         "ssr": {
-          "entry": "apps/mhc/src/server.ts"
+          "entry": "apps/djps/src/server.ts"
         },
         "outputMode": "server",
         "prerender": true
@@ -59,10 +59,10 @@
       "executor": "@angular-devkit/build-angular:dev-server",
       "configurations": {
         "production": {
-          "buildTarget": "mhc:build:production"
+          "buildTarget": "djps:build:production"
         },
         "development": {
-          "buildTarget": "mhc:build:development"
+          "buildTarget": "djps:build:development"
         }
       },
       "defaultConfiguration": "development",
@@ -71,18 +71,18 @@
     "serve-ssr": {
       "executor": "@nx/node:node",
       "options": {
-        "buildTarget": "mhc:server",
+        "buildTarget": "djps:server",
         "watch": true,
-        "outputPath": "dist/apps/mhc/server",
-        "main": "dist/apps/mhc/server/main.js"
+        "outputPath": "dist/apps/djps/server",
+        "main": "dist/apps/djps/server/main.js"
       }
     },
     "server": {
       "executor": "@angular-devkit/build-angular:server",
       "options": {
-        "outputPath": "dist/apps/mhc/server",
-        "main": "apps/mhc/src/main.server.ts",
-        "tsConfig": "apps/mhc/tsconfig.server.json"
+        "outputPath": "dist/apps/djps/server",
+        "main": "apps/djps/src/main.server.ts",
+        "tsConfig": "apps/djps/tsconfig.server.json"
       },
       "configurations": {
         "production": {
@@ -101,7 +101,7 @@
     "extract-i18n": {
       "executor": "@angular-devkit/build-angular:extract-i18n",
       "options": {
-        "buildTarget": "mhc:build"
+        "buildTarget": "djps:build"
       }
     },
     "lint": {
@@ -110,8 +110,8 @@
     "serve-static": {
       "executor": "@nx/web:file-server",
       "options": {
-        "buildTarget": "mhc:build",
-        "staticFilePath": "dist/apps/mhc/browser",
+        "buildTarget": "djps:build",
+        "staticFilePath": "dist/apps/djps/browser",
         "spa": true
       }
     }

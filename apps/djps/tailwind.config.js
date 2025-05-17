@@ -6,7 +6,7 @@ import PrimeUI from 'tailwindcss-primeui';
 module.exports = {
   content: [
     join(__dirname, 'src/**/!(*.stories|*.spec).{html,ts}'),
-    join(__dirname, 'apps/mhc/src/**/*.{html,ts}'),  // your specific app path
+    join(__dirname, 'apps/djps/src/**/*.{html,ts}'),  // your specific app path
     ...createGlobPatternsForDependencies(__dirname),
   ],
   theme: {

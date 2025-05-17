@@ -4,7 +4,7 @@ import { RouterModule } from '@angular/router';
 import { HeaderComponent } from "./components/header.component";
 import { FooterComponent } from './components/footer.component';
 import { CardsComponent } from './components/cards.component';
-import { ApiService } from '@mhc/api';
+import { ApiService } from '@djps/api';
 
 
 
