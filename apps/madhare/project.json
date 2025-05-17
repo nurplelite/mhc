@@ -22,7 +22,10 @@
             "input": "apps/madhare/public"
           }
         ],
-        "styles": ["apps/madhare/src/styles.scss"],
+        "styles": [
+          "apps/madhare/src/themes/mhc-theme.scss",
+          "apps/madhare/src/styles.scss"
+        ],
         "scripts": [],
         "server": "apps/madhare/src/main.server.ts",
         "ssr": {
