@@ -10,7 +10,7 @@ import { providePrimeNG } from 'primeng/config';
 import Aura from '@primeng/themes/aura';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { FilterMatchMode } from 'primeng/api';
-import { sessionInterceptor } from '@mhc/api';
+import { sessionInterceptor } from '@djps/api';
 
 export const appConfig: ApplicationConfig = {
   providers: [
