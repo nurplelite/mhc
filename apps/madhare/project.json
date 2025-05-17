@@ -8,12 +8,16 @@
   "targets": {
     "build": {
       "executor": "@angular-devkit/build-angular:application",
-      "outputs": ["{options.outputPath}"],
+      "outputs": [
+        "{options.outputPath}"
+      ],
       "options": {
         "outputPath": "dist/apps/madhare",
         "index": "apps/madhare/src/index.html",
         "browser": "apps/madhare/src/main.ts",
-        "polyfills": ["zone.js"],
+        "polyfills": [
+          "zone.js"
+        ],
         "tsConfig": "apps/madhare/tsconfig.app.json",
         "inlineStyleLanguage": "sass",
         "assets": [
@@ -22,7 +26,10 @@
             "input": "apps/madhare/public"
           }
         ],
-        "styles": ["apps/madhare/src/styles.sass"],
+        "styles": [
+          "@angular/material/prebuilt-themes/azure-blue.css",
+          "apps/madhare/src/styles.sass"
+        ],
         "scripts": [],
         "server": "apps/madhare/src/main.server.ts",
         "ssr": {
