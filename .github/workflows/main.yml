@@ -37,13 +37,13 @@ jobs:
         run: pnpm install
 
       - name: Lint all apps
-        run: pnpm nx lint mhc madhare
+        run: pnpm nx lint djps madhare
 
       - name: Test all apps
-        run: pnpm nx test mhc madhare
+        run: pnpm nx test djps madhare
 
       - name: Build all apps
-        run: pnpm nx run-many --target=build --projects=mhc,madhare --configuration=production
+        run: pnpm nx run-many --target=build --projects=djps,madhare --configuration=production
 
 
   prod-deploy:
@@ -76,12 +76,12 @@ jobs:
         run: pnpm install
 
       - name: Build sites
-        run: pnpm nx run-many --target=build --projects=mhc,madhare --configuration=production
+        run: pnpm nx run-many --target=build --projects=djps,madhare --configuration=production
 
       - name: Deploy sites to VM
         run: |
           echo "${{ secrets.GCE_SSH_PRIVATE_KEY }}" > key.pem
           chmod 600 key.pem
           trap 'rm -f key.pem' EXIT
-          scp -i key.pem -o StrictHostKeyChecking=no -r dist/apps/mhc/browser/* ${{ secrets.GCE_VM_USER }}@${{ secrets.GCE_VM_IP }}:/var/www/html/djps/
+          scp -i key.pem -o StrictHostKeyChecking=no -r dist/apps/djps/browser/* ${{ secrets.GCE_VM_USER }}@${{ secrets.GCE_VM_IP }}:/var/www/html/djps/
           scp -i key.pem -o StrictHostKeyChecking=no -r dist/apps/madhare/browser/* ${{ secrets.GCE_VM_USER }}@${{ secrets.GCE_VM_IP }}:/var/www/html/madhare/

@@ -7,7 +7,7 @@ import { InputIconModule } from 'primeng/inputicon';
 import { IconFieldModule } from 'primeng/iconfield';
 import { IftaLabelModule } from 'primeng/iftalabel';
 import { FormGroup, FormControl, Validators, ReactiveFormsModule } from '@angular/forms';
-import { ApiService } from '@mhc/api';
+import { ApiService } from '@djps/api';
 import { MessageService } from 'primeng/api';
 import { Toast } from 'primeng/toast';
 
