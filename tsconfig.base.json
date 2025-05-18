@@ -16,8 +16,7 @@
     "baseUrl": ".",
     "paths": {
       "@djps/api": ["libs/api/src/index.ts"],
-      "@mhc/components": ["libs/shared/components/src/index.ts"],
-      "@mhc/themes": ["libs/shared/themes/src/index.ts"]
+      "@mhc/components": ["libs/shared/components/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
