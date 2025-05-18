@@ -5,7 +5,7 @@
 @use '@angular/material' as mat;
 
 // Note: Color palettes are generated from primary: #0B5187, secondary: #FE822F, tertiary: #031149, neutral: #5C616A, neutral variant: #ECEBEA, error: #FF206E
-$_palettes: (
+$palettes: (
   primary: (
     0: #000000,
     10: #001d36,
@@ -126,15 +126,15 @@ $_palettes: (
   ),
 );
 
-$_rest: (
-  secondary: map.get($_palettes, secondary),
-  neutral: map.get($_palettes, neutral),
-  neutral-variant: map.get($_palettes,  neutral-variant),
-  error: map.get($_palettes, error),
+$rest: (
+  secondary: map.get($palettes, secondary),
+  neutral: map.get($palettes, neutral),
+  neutral-variant: map.get($palettes,  neutral-variant),
+  error: map.get($palettes, error),
 );
 
-$primary-palette: map.merge(map.get($_palettes, primary), $_rest);
-$tertiary-palette: map.merge(map.get($_palettes, tertiary), $_rest);
+$primary-palette: map.merge(map.get($palettes, primary), $rest);
+$tertiary-palette: map.merge(map.get($palettes, tertiary), $rest);
 
 @function _high-contrast-value($light, $dark, $theme-type) {
   @if ($theme-type == light) {
@@ -202,7 +202,3 @@ $tertiary-palette: map.merge(map.get($_palettes, tertiary), $_rest);
     surface-variant: _high-contrast-value(#e3e2e1, #464746, $theme-type),
     on-surface-variant: _high-contrast-value(#000000, #ffffff, $theme-type),
   ))
- }
-
-  @forward 'your-theme-file.scss' show $primary-palette, $tertiary-palette
-
