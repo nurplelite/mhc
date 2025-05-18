@@ -1,5 +1,4 @@
-@use '@angular/material' as mat;
-@use '@mhc/shared/themes/src/themes/mhc-theme.sass' as themes;
+@use '@mhc/themes/themes/mhc-theme';
 
 @tailwind base
 @tailwind components
@@ -7,10 +6,3 @@
 
 /* You can add global styles to this file, and also import other style files */
 
-
-@debug themes.$primary-palette
-@debug themes.$tertiary-palette
-@debug themes.$_palettes
-
-
-@include mat.all-component-themes($my-theme)
