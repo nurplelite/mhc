@@ -2,9 +2,9 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'mhc',
+  selector: 'lib-components',
   imports: [CommonModule],
   templateUrl: './components.component.html',
-  styleUrl: './components.component.sass',
+  styleUrl: './components.component.scss',
 })
 export class ComponentsComponent {}
