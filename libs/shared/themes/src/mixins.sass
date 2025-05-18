@@ -1,0 +1,25 @@
+@mixin light-theme
+  :root
+    --theme-primary: #0B5187
+    --theme-background: #ffffff
+    --theme-surface: #f8f9ff
+  html, body
+    background-color: var(--theme-background)
+    color: var(--theme-primary)
+  html
+    font-family: 'Peridot', 'Roboto', sans-serif
+  body
+    font-family: 'Roboto', sans-serif
+
+@mixin dark-theme
+  :root
+    --theme-primary: #9ecaff
+    --theme-background: #0f141b
+    --theme-surface: #1b2028
+  html, body
+    background-color: var(--theme-background)
+    color: var(--theme-primary)
+  html
+    font-family: 'Peridot', 'Roboto', sans-serif
+  body
+    font-family: 'Roboto', sans-serif
