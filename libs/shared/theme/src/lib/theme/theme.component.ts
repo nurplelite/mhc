@@ -2,9 +2,8 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'lib-components',
   imports: [CommonModule],
-  templateUrl: './components.component.html',
+  template: `<p>Theme works!</p>`,
   styles: ``,
 })
-export class ComponentsComponent {}
+export class ThemeComponent {}
