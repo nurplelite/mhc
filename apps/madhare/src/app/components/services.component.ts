@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'services',
+  selector: 'mhc-services',
   imports: [CommonModule],
   template: `<p>services works!</p>`,
   styles: ``,

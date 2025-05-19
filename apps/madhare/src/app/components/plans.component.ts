@@ -2,9 +2,9 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'footer',
+  selector: 'mhc-plans',
   imports: [CommonModule],
-  template: `<p>footer works!</p>`,
+  template: `<p>features works!</p>`,
   styles: ``,
 })
-export class FooterComponent {}
+export class PlansComponent {}

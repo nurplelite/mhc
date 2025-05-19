@@ -2,9 +2,9 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'features',
+  selector: 'mhc-hero',
   imports: [CommonModule],
-  template: `<p>features works!</p>`,
+  template: `<p>hero works!</p>`,
   styles: ``,
 })
-export class FeaturesComponent {}
+export class HeroComponent {}

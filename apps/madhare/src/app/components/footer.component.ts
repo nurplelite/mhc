@@ -2,9 +2,9 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'hero',
+  selector: 'mhc-footer',
   imports: [CommonModule],
-  template: `<p>hero works!</p>`,
+  template: `<p>footer works!</p>`,
   styles: ``,
 })
-export class HeroComponent {}
+export class FooterComponent {}
