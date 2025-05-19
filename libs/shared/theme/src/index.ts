@@ -1,1 +1,1 @@
-export * from './lib/theme/presets';
+export * from './lib/presets';

@@ -14,11 +14,4 @@
   @tailwind utilities;
 }
 
-@import "primeicons/primeicons.css";
-@import '@primeng/themes/aura/theme.css'; // Core theme
-@import '@primeng/themes/aura/variables.css'; // Optional: includes base variable layer
-
-html, body{
-  background-color: primary-background;
-}
 

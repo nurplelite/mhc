@@ -211,6 +211,15 @@ importers:
         specifier: ^6.0.5
         version: 6.1.2(encoding@0.1.13)(typanion@3.14.0)
 
+  libs/shared/theme:
+    dependencies:
+      '@angular/common':
+        specifier: ^19.2.0
+        version: 19.2.11(@angular/core@19.2.11(rxjs@7.8.2)(zone.js@0.15.0))(rxjs@7.8.2)
+      '@angular/core':
+        specifier: ^19.2.0
+        version: 19.2.11(rxjs@7.8.2)(zone.js@0.15.0)
+
 packages:
 
   '@adobe/css-tools@4.3.3':
@@ -5921,8 +5930,8 @@ packages:
     resolution: {integrity: sha512-P0efT1C9jIdVRefqjzOQ9Xml57zpOXnIuS+csaB4MdZbTdmGDLo8XhzBG1N7aO11gKDDkJvBLULeFTo46wwreA==}
     hasBin: true
 
-  msgpackr@1.11.3:
-    resolution: {integrity: sha512-mNdO4s/W54QCghwGNSqO5ULVJ6QUimP/1hRlWVx5f7frTLaClg+4sBRjUTgP1OrBRgVtkH1tI9vi4Dqg/JX3Kg==}
+  msgpackr@1.11.4:
+    resolution: {integrity: sha512-uaff7RG9VIC4jacFW9xzL3jc0iM32DNHe4jYVycBcjUePT/Klnfj7pqtWJt9khvDFizmjN2TlYniYmSS2LIaZg==}
 
   multicast-dns@7.2.5:
     resolution: {integrity: sha512-2eznPJP8z2BFLX50tf0LuODrpINqP1RVIm/CObbTcBRITQgmC/TjcREF1NeTBzIcR5XO/ukWo+YHOjBbFwIupg==}
@@ -15475,7 +15484,7 @@ snapshots:
 
   lmdb@3.2.6:
     dependencies:
-      msgpackr: 1.11.3
+      msgpackr: 1.11.4
       node-addon-api: 6.1.0
       node-gyp-build-optional-packages: 5.2.2
       ordered-binary: 1.5.3
@@ -15784,7 +15793,7 @@ snapshots:
       '@msgpackr-extract/msgpackr-extract-win32-x64': 3.0.3
     optional: true
 
-  msgpackr@1.11.3:
+  msgpackr@1.11.4:
     optionalDependencies:
       msgpackr-extract: 3.0.3
     optional: true

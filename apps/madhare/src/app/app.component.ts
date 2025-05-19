@@ -2,10 +2,10 @@ import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { ButtonModule } from 'primeng/button';
 import { CardModule } from 'primeng/card';
-import { ThemeShowcaseComponent } from './components/test';
+
 
 @Component({
-  imports: [ RouterModule, ButtonModule, CardModule, ThemeShowcaseComponent ],
+  imports: [ RouterModule, ButtonModule, CardModule ],
   selector: 'mhc-root',
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
