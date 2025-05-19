@@ -1,0 +1,89 @@
+{
+  "name": "madhare",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "prefix": "mhc",
+  "sourceRoot": "apps/madhare/src",
+  "tags": [],
+  "targets": {
+    "build": {
+      "executor": "@angular-devkit/build-angular:application",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/apps/madhare",
+        "index": "apps/madhare/src/index.html",
+        "browser": "apps/madhare/src/main.ts",
+        "polyfills": ["zone.js"],
+        "tsConfig": "apps/madhare/tsconfig.app.json",
+        "inlineStyleLanguage": "scss",
+        "assets": [
+          {
+            "glob": "**/*",
+            "input": "apps/madhare/public"
+          }
+        ],
+        "styles": ["apps/madhare/src/styles.scss"],
+        "scripts": [],
+        "server": "apps/madhare/src/main.server.ts",
+        "ssr": {
+          "entry": "apps/madhare/src/server.ts"
+        },
+        "prerender": true
+      },
+      "configurations": {
+        "production": {
+          "budgets": [
+            {
+              "type": "initial",
+              "maximumWarning": "500kb",
+              "maximumError": "1mb"
+            },
+            {
+              "type": "anyComponentStyle",
+              "maximumWarning": "4kb",
+              "maximumError": "8kb"
+            }
+          ],
+          "outputHashing": "all"
+        },
+        "development": {
+          "optimization": false,
+          "extractLicenses": false,
+          "sourceMap": true
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "serve": {
+      "continuous": true,
+      "executor": "@angular-devkit/build-angular:dev-server",
+      "configurations": {
+        "production": {
+          "buildTarget": "madhare:build:production"
+        },
+        "development": {
+          "buildTarget": "madhare:build:development"
+        }
+      },
+      "defaultConfiguration": "development"
+    },
+    "extract-i18n": {
+      "executor": "@angular-devkit/build-angular:extract-i18n",
+      "options": {
+        "buildTarget": "madhare:build"
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint"
+    },
+    "serve-static": {
+      "continuous": true,
+      "executor": "@nx/web:file-server",
+      "options": {
+        "buildTarget": "madhare:build",
+        "staticFilePath": "dist/apps/madhare/browser",
+        "spa": true
+      }
+    }
+  }
+}
