@@ -5,6 +5,7 @@ import { PlansComponent } from '../../components/plans.component';
 import { HeroComponent } from '../../components/hero.component';
 import { FooterComponent } from '../../components/footer.component';
 
+
 @Component({
   selector: 'mhc-landing',
   imports: [CommonModule, ServicesComponent, PlansComponent, HeroComponent, FooterComponent],
@@ -13,4 +14,6 @@ import { FooterComponent } from '../../components/footer.component';
   templateUrl: './landing.page.html',
   styles: ``,
 })
-export class LandingPageComponent {}
+export class LandingPageComponent {
+
+}
