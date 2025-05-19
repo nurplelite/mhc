@@ -1,0 +1,15 @@
+@use 'sass:map';
+@use '@angular/material' as mat;
+@use '@angular/material/core/typography/typography' as mat-typography;
+@use './mhc-palette' as palette;
+
+$my-theme: mat.define-theme((
+  color: (
+    primary: palette.$primary-palette,
+    tertiary: palette.$tertiary-palette,
+  )
+));
+
+:root {
+  @include mat.all-component-themes($my-theme);
+}

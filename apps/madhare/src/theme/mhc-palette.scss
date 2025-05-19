@@ -136,6 +136,7 @@ $rest: (
 $primary-palette: map.merge(map.get($palettes, primary), $rest);
 $tertiary-palette: map.merge(map.get($palettes, tertiary), $rest);
 
+
 @function _high-contrast-value($light, $dark, $theme-type) {
   @if ($theme-type == light) {
     @return $light;
@@ -203,3 +204,5 @@ $tertiary-palette: map.merge(map.get($palettes, tertiary), $rest);
     on-surface-variant: _high-contrast-value(#000000, #ffffff, $theme-type),
   ))
 }
+
+
