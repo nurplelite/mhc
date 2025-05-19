@@ -1,9 +1,11 @@
 import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { NxWelcomeComponent } from './nx-welcome.component';
+import { ButtonModule } from 'primeng/button';
+import { CardModule } from 'primeng/card';
+import { ThemeShowcaseComponent } from './components/test';
 
 @Component({
-  imports: [NxWelcomeComponent, RouterModule],
+  imports: [ RouterModule, ButtonModule, CardModule, ThemeShowcaseComponent ],
   selector: 'mhc-root',
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',

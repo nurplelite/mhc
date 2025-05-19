@@ -15,7 +15,8 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@djps/api": ["libs/api/src/index.ts"]
+      "@djps/api": ["libs/api/src/index.ts"],
+      "@mhc/theme": ["libs/shared/theme/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

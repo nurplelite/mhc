@@ -5,11 +5,167 @@ import {
   provideClientHydration,
   withEventReplay,
 } from '@angular/platform-browser';
+import {
+  provideHttpClient,
+  withFetch,
+  withInterceptors,
+} from '@angular/common/http';
+import { providePrimeNG } from 'primeng/config';
+import Aura from '@primeng/themes/aura';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { FilterMatchMode } from 'primeng/api';
+import { sessionInterceptor } from '@djps/api';
+import { definePreset } from '@primeng/themes';
 
 export const appConfig: ApplicationConfig = {
   providers: [
     provideClientHydration(withEventReplay()),
     provideZoneChangeDetection({ eventCoalescing: true }),
     provideRouter(appRoutes),
+    provideHttpClient(withFetch(), withInterceptors([sessionInterceptor])),
+    provideAnimationsAsync(),
+    providePrimeNG({
+      theme: {
+        preset: definePreset(Aura, {
+          primtive: {
+
+          },
+          semantic: {
+            colorScheme: {
+              light: {
+                primary: {
+                  0: '#000000',
+                  10: '#001d36',
+                  20: '#003258',
+                  25: '#003d6a',
+                  30: '#00497d',
+                  35: '#13558b',
+                  40: '#266198',
+                  50: '#447ab3',
+                  60: '#5f94ce',
+                  70: '#7aafeb',
+                  80: '#9ecaff',
+                  90: '#d1e4ff',
+                  95: '#eaf1ff',
+                  98: '#f8f9ff',
+                  99: '#fdfcff',
+                  100: '#ffffff',
+                },
+                secondary: {
+                  0: '#000000',
+                  10: '#07154d',
+                  20: '#202c62',
+                  25: '#2c376e',
+                  30: '#37437a',
+                  35: '#434f87',
+                  40: '#4f5b94',
+                  50: '#6874ae',
+                  60: '#828dca',
+                  70: '#9ca8e6',
+                  80: '#b9c3ff',
+                  90: '#dde1ff',
+                  95: '#f0efff',
+                  98: '#fbf8ff',
+                  99: '#fefbff',
+                  100: '#ffffff',
+                },
+                tertiary: {
+                  0: '#000000',
+                  10: '#331200',
+                  20: '#532200',
+                  25: '#652a00',
+                  30: '#763300',
+                  35: '#883c00',
+                  40: '#9b4500',
+                  50: '#c25800',
+                  60: '#e56f1b',
+                  70: '#ff8d46',
+                  80: '#ffb68e',
+                  90: '#ffdbc9',
+                  95: '#ffede5',
+                  98: '#fff8f6',
+                  99: '#fffbff',
+                  100: '#ffffff',
+                },
+                surface: {
+                  0: '#000000',
+                  10: '#171c23',
+                  20: '#2c3139',
+                  25: '#373c44',
+                  30: '#424750',
+                  35: '#4e535b',
+                  40: '#5a5f68',
+                  50: '#727781',
+                  60: '#8c919b',
+                  70: '#a7abb5',
+                  80: '#c2c6d1',
+                  90: '#dee2ed',
+                  95: '#ecf1fb',
+                  98: '#f8f9ff',
+                  99: '#fdfcff',
+                  100: '#ffffff',
+                },
+              },
+            },
+            tokens: {
+              primaryColor: '{primary.40}',
+              primaryColorText: '{primary.100}',
+              background: '{surface.98}',
+              surfaceColor: '{surface.100}',
+              textColor: '{surface.10}',
+              contentColor: '{surface.0}',
+            },
+          },
+        }),
+        options: {
+          overrides: {
+            primaryColor: 'var(--primary-40)',
+            primaryColorText: 'var(--primary-100)',
+            background: 'var(--surface-98)',
+            surfaceColor: 'var(--surface-100)',
+            textColor: 'var(--surface-10)',
+            contentColor: 'var(--surface-0)',
+          },
+          darkModeSelector: 'system',
+          cssLayer: {
+            name: 'primeng',
+            order: 'tailwind-base, primeng, tailwind-utilities',
+          },
+          zIndex: {
+            modal: 1100,
+            overlay: 1000,
+            menu: 1000,
+            tooltip: 1100,
+          },
+          csp: {
+            nonce: '...',
+          },
+          filterMatchModeOptions: {
+            text: [
+              FilterMatchMode.STARTS_WITH,
+              FilterMatchMode.CONTAINS,
+              FilterMatchMode.NOT_CONTAINS,
+              FilterMatchMode.ENDS_WITH,
+              FilterMatchMode.EQUALS,
+              FilterMatchMode.NOT_EQUALS,
+            ],
+            numeric: [
+              FilterMatchMode.EQUALS,
+              FilterMatchMode.NOT_EQUALS,
+              FilterMatchMode.LESS_THAN,
+              FilterMatchMode.LESS_THAN_OR_EQUAL_TO,
+              FilterMatchMode.GREATER_THAN,
+              FilterMatchMode.GREATER_THAN_OR_EQUAL_TO,
+            ],
+            date: [
+              FilterMatchMode.DATE_IS,
+              FilterMatchMode.DATE_IS_NOT,
+              FilterMatchMode.DATE_BEFORE,
+              FilterMatchMode.DATE_AFTER,
+            ],
+          },
+        },
+      },
+    }),
   ],
 };
