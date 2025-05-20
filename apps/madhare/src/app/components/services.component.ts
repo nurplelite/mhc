@@ -8,35 +8,36 @@ import { CardModule } from 'primeng/card';
   selector: 'mhc-services',
   imports: [CommonModule, CardModule, ButtonModule],
   template: `
-    @if(services.length > 0){
+
     <div class="mb-4 p-8 flex items-center justify-center">
       @for(service of services; track service.title; let i = $index, numServices
       = $count){
       <p-card [style]="{ width: '25rem', overflow: 'hidden' }">
         <ng-template #header>
-          <img [src]="service.logo" alt="{{ service.alt }}" class="w-full" />
+          <img [src]="service.logo" [alt]="service.alt" class="w-full" />
         </ng-template>
         <ng-template #title>
           {{ service.title }}
         </ng-template>
-        <ng-template #body>
-          <p>
-            {{ service.desc }}
-          </p>
-          @if(service.list.length > 0){
-            <ul>
-              @for(item of service.list; track item; let i = $index){
-                <li>{{ item }}</li>
-              }@empty{
-                <li>Loading list</li>
-              }
-            </ul>
-          }
-        </ng-template>
+
+          <div>
+            <p>
+              {{ service.desc }}
+            </p>
+            <p> {{ service.list[0] }}</p>
+
+              <ul>
+                @for(item of service.list; track item; let i = $index){
+                  <li>{{ item }}</li>
+                }@empty{
+                  <li>Loading list</li>
+                }
+              </ul>
+          </div>
 
         <ng-template #footer>
           <div class="flex gap-4 mt-1">
-           <p-button label="{{ service.btntxt }}"></p-button>
+          <p-button [label]="service.btntxt"></p-button>
           </div>
         </ng-template>
       </p-card>
@@ -44,7 +45,7 @@ import { CardModule } from 'primeng/card';
       <p>Loading Services</p>
       }
     </div>
-    }
+
   `,
   styles: ``,
 })
