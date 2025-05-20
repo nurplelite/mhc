@@ -14,29 +14,29 @@ import { CardModule } from 'primeng/card';
       = $count){
       <p-card [style]="{ width: '25rem', overflow: 'hidden' }">
         <ng-template #header>
-          <img [src]="service.icon" alt="service image" />
+          <img [src]="service.logo" alt="{{ service.alt }}" class="w-full" />
         </ng-template>
         <ng-template #title>
           {{ service.title }}
         </ng-template>
-        <ng-template #subtitle>
-          {{ service.subtitle }}
+        <ng-template #body>
+          <p>
+            {{ service.desc }}
+          </p>
+          @if(service.list.length > 0){
+            <ul>
+              @for(item of service.list; track item; let i = $index){
+                <li>{{ item }}</li>
+              }@empty{
+                <li>Loading list</li>
+              }
+            </ul>
+          }
         </ng-template>
-        <p>
-          {{ service.desc }}
-        </p>
-        @if(service.list.length > 0){
-        <ul>
-          @for(item of service.list; track item; let i = $index){
-          <li>{{ item }}</li>
-          }@empty{
-          <li>Loading list</li>
-        </ul>
-        } }
 
         <ng-template #footer>
           <div class="flex gap-4 mt-1">
-            <p>{{ service.cost }}</p>
+           <p-button label="{{ service.btntxt }}"></p-button>
           </div>
         </ng-template>
       </p-card>

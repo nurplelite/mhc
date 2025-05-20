@@ -8,25 +8,25 @@ import { CardModule } from 'primeng/card';
   selector: 'mhc-plans',
   imports: [CommonModule, CardModule],
   template: `
-     @if(services.length > 0){
+     @if(plans.length > 0){
         <div class="mb-4 p-8 flex items-center justify-center">
-          @for(service of services; track service.title; let i = $index, numServices = $count){
+          @for(plan of plans; track plan.title; let i = $index, numplans = $count){
           <p-card [style]="{ width: '25rem', overflow: 'hidden' }">
             <ng-template #header>
-              <img [src]="service.icon" alt="service image" />
+
             </ng-template>
-            <ng-template #title> {{service.title}} </ng-template>
-            <ng-template #subtitle>{{service.subtitle}} </ng-template>
+            <ng-template #title> {{plan.title}} </ng-template>
+
               <p>
-                {{service.desc}}
+                {{plan.desc}}
               </p>
             <ng-template #footer>
                 <div class="flex gap-4 mt-1">
-                    <p>{{service.cost}}</p>
+                    <p>{{plan.cost}}</p>
                 </div>
               </ng-template>
           </p-card>
-          }@empty {<p>Loading Services</p>}
+          }@empty {<p>Loading plans</p>}
         </div>
     }
   `,
@@ -71,7 +71,7 @@ export class PlansComponent {
       {
         title: 'Premium Web & Media Suite',
         subtitle: 'Complete custom design and media-rich content',
-        desc: '  A professionally designed single-page website including a custom header, hero section, service cards, and contact form. Perfect for new businesses looking to get online quickly and affordably.',
+        desc: '  A professionally designed single-page website including a custom header, hero section, services showcase, and contact form. Perfect for new businesses looking to get online quickly and affordably.',
         icon: 'link',
         list: [
           'Up to 1  hours of design/dev consultation',
@@ -87,7 +87,7 @@ export class PlansComponent {
       },
       {
         title: 'Custom Design and Services',
-        subtitle: 'A la carte services',
+        subtitle: 'A la carte service',
         list: [
           'New components',
           'Api Integrations',
@@ -96,7 +96,7 @@ export class PlansComponent {
           'Video Editing ',
           'Forms and automations',
         ],
-        desc: 'Whether you are already a customer, or just need some enhancements or services for your exisiting website, you can add services from this list.',
+        desc: 'Whether you are already a customer, or just need some enhancements to or changes for your exisiting website, you can add services from this list.',
         icon: 'link',
         link: 'https://www.google.com',
         cost: 200,
