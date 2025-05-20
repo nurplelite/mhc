@@ -9,10 +9,10 @@ import { CardModule } from 'primeng/card';
   imports: [CommonModule, CardModule],
   template: `
      @if(packages.length > 0){
-    <div class="mb-4 p-8 flex items-center justify-center">
+    <div class="mb-4 p-8 flex flex-col items-center justify-center">
       @for(package of packages; track package.title; let i = $index, numpackages
       = $count){
-      <p-card [style]="{ width: '25rem', overflow: 'hidden' }">
+      <p-card class="w-full max-w-5xl p-3">
         <ng-template #header>
           <img [src]="package.icon" [alt]="package.title" class="w-full" />
         </ng-template>
