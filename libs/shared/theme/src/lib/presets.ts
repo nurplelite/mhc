@@ -1,10 +1,16 @@
 import { definePreset, palette } from '@primeng/themes';
 import Aura from '@primeng/themes/aura';
 
-const primaryPalette = palette('#266198')
-const secondaryPalette = palette('#d64fb5')
-const tertiaryPalette = palette('#fe9b59')
-const surfacePalette = palette('#5f634f')
+const primaryPalette1 = palette('#266198')
+const secondaryPalette1 = palette('#d64fb5')
+const tertiaryPalette1 = palette('#fe9b59')
+const surfacePalette1 = palette('#5f634f')
+
+const primaryPalette = palette('#FFA15A')
+const secondaryPalette = palette('#5B616A')
+const tertiaryPalette = palette('#415F8C')
+const surfacePalette = palette('#FECCA9')
+
 
 export const mhcPreset = definePreset( Aura,
   {
